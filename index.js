@@ -15,12 +15,8 @@ app.use(bodyParser.urlencoded ({ extended: true }) );
 var DATABASE = "testDB";
 var database;
 
-const swaggerJSDoc = require ('swagger-jsdoc');
+const swaggerJsDoc = require ('swagger-jsdoc');
 const swaggerUI = require ('swagger-ui-express');
-
-const swaggerDocs = swaggerJSDoc(swaggerOptions);
-
-app.use ('/api-docs', swaggerUi.serve, swaggerUi.setup (swaggerDocs));
 
 const swaggerOptions = {
     swaggerDefinition: {
@@ -35,6 +31,10 @@ const swaggerOptions = {
     },
     apis: ["index.js"]
 };
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+
+app.use ('/api-docs', swaggerUI.serve, swaggerUI.setup (swaggerDocs));
 
 app.listen(49146, () => { 
     //MongoDB connection
