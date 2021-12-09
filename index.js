@@ -12,7 +12,7 @@ app.use(bodyParser.json ());
 app.use(bodyParser.urlencoded ({ extended: true }) );
 
 //name of the created MongoDB
-var DATABASE = "testDB";
+var DATABASE = "SPS_db";
 var database;
 
 const swaggerJsDoc = require ('swagger-jsdoc');
@@ -36,7 +36,7 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 app.use ('/api-docs', swaggerUI.serve, swaggerUI.setup (swaggerDocs));
 
-app.listen(49146, () => { 
+app.listen(49146, () => {
     //MongoDB connection
     MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
     useUnifiedTopology: true}, (error, client) => {
@@ -54,4 +54,42 @@ app.use(cors());
 
 app.get( '/', (request, response) => {
     response.send('Ciao Gaia');
-})
+});
+
+
+app.get('/dispositivo', (request, response) => {
+  MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
+    useUnifiedTopology: true}, (error, client) => {
+      if(error) {
+        console.log("Error connecting at the MongoDB: "+ error);
+        return;
+      }
+
+      const db = client.db(DATABASE);
+      const cursor = db.collection('dispositivo').find();
+      cursor.toArray().then(results => response.send(results));
+  })
+});
+
+const SAMPLE_DISPOSITIVO = {
+  ConsumiDichiarati: Math.random()*20,
+  DispositivoName: "LampadinaLed",
+  UnitaMisura: "kW"
+}
+app.post('/dispositivo', (request, response) => {
+  MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
+    useUnifiedTopology: true}, (error, client) => {
+      if(error) {
+        console.log("Error connecting at the MongoDB: "+ error);
+        return;
+      }
+
+      const db = client.db(DATABASE);
+      const collection = db.collection('dispositivo');
+      collection.insertOne(SAMPLE_DISPOSITIVO)
+        .then(result => {
+          response.send(result)
+        })
+        .catch(error => console.error(error))
+  })
+});
