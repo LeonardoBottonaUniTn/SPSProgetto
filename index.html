@@ -43,9 +43,31 @@
                 src="/Immagini//IconaProfilo.png" width="40" height="40" />
             </div>
         </nav>
-        <div class="container my-5 text-center" style="max-width: 600; max-height: 400;">
-            <img src="/Logo/Logo5.ico" alt="">
+        <div class="container-fluid my-5 text-center" style="max-width: 600px; max-height: 400px;">
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active text-center">
+                            <img src="/Logo/Logo2.jpg"  alt="..." object-fit="cover" style="height: 400px">
+                        </div>
+                    <div class="carousel-item text-center"> 
+                        <img src="/Logo/Logo5.ico"  alt="..." object-fit="cover" style="height: 400px">
+                    </div>
+                    <div class="carousel-item text-center">
+                        <img src="/Logo/Logo6.jpg"  alt="..." object-fit="cover" style="height: 400px">
+                    </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            
         </div>
+
             
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="script.js"></script>
