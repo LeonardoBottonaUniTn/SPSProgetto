@@ -1,5 +1,6 @@
 var Express = require ("express");
 var bodyParser = require ("body-parser");
+var fs = require('fs');
 
 // add MongoDB Client
 var MongoClient = require ("mongodb").MongoClient;
@@ -54,4 +55,11 @@ app.use(cors());
 
 app.get( '/', (request, response) => {
     response.send('Ciao Gaia');
+})
+
+app.get ('/proprieta', (requenst, response) => {
+    const userRouter = require ('./proprieta');
+    var data = fs.readFileSync ('proprieta.json');
+    var myObj = JSON.parse (data);
+    response.send (myObj);
 })
