@@ -15,6 +15,8 @@
     </head>
 
     <body>
+
+        <!--NAVBAR-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
@@ -29,7 +31,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link"href="#">Dashboard</a>
+                            <a class="nav-link" href="/index.html">Dashboard</a>
                         </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Dispositivi</a>
@@ -50,23 +52,38 @@
             </div>
             
         </nav>
-        <div class="container">
-            <div class="row">
+
+        <!--CONTAINER SCHEDE DEI TRIGGERS-->
+        <div class="container my-5">
+            <div class="row gap-3 justify-content-md-center">
               <div class="col">
                 <div class="card" style="width:18rem">
                     <div class="card-body">
                         <h5 class="card-title">Trigger 1</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <p class="card-text">
+                            Nome dispositivo: Carlo <br/>
+                            Livello soglia: altruista
+                        </p>
+                        <div class="container">
+                            <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;">Modifica</a>
+                            <a href="#" class="btn btn-outline-danger btn-sm"><img src="/Immagini/TrashVero.png" style="width: 22px; "></a>
+                        </div>
                     </div>
+                    
                 </div>
               </div>
               <div class="col">
                 <div class="card" style="width:18rem">
                     <div class="card-body">
                         <h5 class="card-title">Trigger 2</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <p class="card-text">
+                            Nome dispositivo: Carlo <br/>
+                            Livello soglia: altruista
+                        </p>
+                        <div class="container">
+                            <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;">Modifica</a>
+                            <a href="#" class="btn btn-outline-danger btn-sm"><img src="/Immagini/TrashVero.png" style="width: 22px; "></a>
+                        </div>
                     </div>
                 </div>
               </div>
@@ -74,8 +91,14 @@
                 <div class="card" style="width:18rem">
                     <div class="card-body">
                         <h5 class="card-title">Trigger 3</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <p class="card-text">
+                            Nome dispositivo: Carlo <br/>
+                            Livello soglia: altruista
+                        </p>
+                        <div class="container">
+                            <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;">Modifica</a>
+                            <a href="#" class="btn btn-outline-danger btn-sm"><img src="/Immagini/TrashVero.png" style="width: 22px; "></a>
+                        </div>
                     </div>
                 </div>
               </div>
@@ -83,15 +106,26 @@
                 <div class="card" style="width:18rem">
                     <div class="card-body">
                         <h5 class="card-title">Trigger 4</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <p class="card-text">
+                            Nome dispositivo: Carlo <br/>
+                            Livello soglia: altruista
+                        </p>
+                        <div class="container">
+                            <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;">Modifica</a>
+                            <a href="#" class="btn btn-outline-danger btn-sm"><img src="/Immagini/TrashVero.png" style="width: 22px; "></a>
+                        </div>
                     </div>
                 </div>
               </div>
             </div>
-          </div>
+        </div>
         
-
+        <!--BOTTONE AGGIUNGI-->
+        <div class="position-absolute bottom-0 start-50 translate-middle">
+            <button type="button" class="btn btn-outline-secondary">+</button>
+        </div>
+        
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="script.js"></script>
     </body>
