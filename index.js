@@ -52,12 +52,12 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
     }
 
     const calculateResults = response => {
-      return results => {
-        let consumo = 0;
-        for(r of results) {
-          consumo += r.ConsumoGiornaliero;
+      return consumi => {
+        let consumoTotale = 0;
+        for(c of consumi) {
+          consumoTotale += c.ConsumoGiornaliero;
         }
-        response.json({ consumo });
+        response.json({ consumo: consumoTotale });
       }
     }
 
@@ -413,7 +413,43 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
      *       '400':
      *         description: L'email inserita è invalida.
      */
-    app.get("/utenti/:id/consumo", (req, res) => {
+    app.get("/utenti/:email/consumo", (req, res) => {
+      const { email } = req.params;
+      const { datetimeStart, datetimeEnd } = req.body;
+
+      const db = client.db(DATABASE);
+      db.collection('proprietà').find({
+        "Utente": email,
+      })
+        .toArray()
+        .then(proprieta => proprieta.map(p => MongoDB.ObjectId(p._id)))
+        .then(idProprieta => {
+          db.collection("stanza").find({
+            "Proprieta": { $in: idProprieta }
+          }).toArray()
+            .then(stanze => {
+              return db.collection("dispositivo").find({
+                $or: [
+                  {
+                    "Locazione.tipo": "stanza",
+                    "Locazione.id": { $in: stanze.map(s => MongoDB.ObjectId(s._id)) }
+                  },
+                  {
+                    "Locazione.tipo": "proprietà",
+                    "Locazione.id": { $in: idProprieta }
+                  }
+                ]
+              }).toArray();
+            })
+            .then(dispositivi => {
+              return db.collection("consumi").find({
+                "DispositivoId": { $in: dispositivi.map(d => MongoDB.ObjectId(d._id)) }
+              }).toArray()
+            })
+            .then(calculateResults(res))
+            .catch(errore => res.status(400).json({ errore }))
+        })
+        .catch(errore => res.status(400).json({ errore }));
     });
 
     /* TRIGGER */
