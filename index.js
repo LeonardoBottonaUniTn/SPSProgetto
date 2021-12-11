@@ -113,7 +113,7 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
      * @openapi
      * /dispositivi/{id_dispositivo}/consumo:
      *   get:
-     *     summary: Restituisce i kWh consumati in un periodo di tempo.
+     *     summary: Restituisce i kWh consumati in un periodo di tempo da un dispositivo.
      *     parameters:
      *       - name: id_dispositivo
      *         in: path
@@ -260,6 +260,33 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
         .catch(err => res.send(err));
     });
 
+    /**
+     * @openapi
+     * /proprieta/{id_proprietà}/consumo:
+     *   get:
+     *     summary: Restituisce i kWh consumati in un periodo di tempo da una proprietà.
+     *     parameters:
+     *       - name: id_proprietà
+     *         in: path
+     *         required: true
+     *         description: L'ID della proprietà.
+     *     description: |
+     *       Restituisce i kWh consumati da tutti i dispositivi in una proprietà in un periodo di tempo. Si possono anche specificare la data di inizio e di fine nel body della richiesta.
+     *       ```json
+     *       {
+     *         "dateStart": "YYYY-MM-DD",
+     *         "dateEnd": "YYYY-MM-DD"
+     *       }
+     *       ```
+     *       Entrambi gli attributi sono opzionali.
+     *     responses:
+     *       '200':
+     *         description: Il consumo in kWh dei dispositivi nella proprietà.
+     *       '404':
+     *         description: "Nessuna proprietà con quell'ID è stato trovata."
+     *       '400':
+     *         description: L'ID inserito è invalido.
+     */
     app.get("/proprieta/:id/consumo", (req, res) => {
       let id;
       try {
@@ -303,6 +330,33 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
         .catch(err => res.send(err));
     });
 
+    /**
+     * @openapi
+     * /stanze/{id_stanza}/consumo:
+     *   get:
+     *     summary: Restituisce i kWh consumati in un periodo di tempo da una stanza.
+     *     parameters:
+     *       - name: id_stanza
+     *         in: path
+     *         required: true
+     *         description: L'ID della stanza.
+     *     description: |
+     *       Restituisce i kWh consumati da tutti i dispositivi in una stanza in un periodo di tempo. Si possono anche specificare la data di inizio e di fine nel body della richiesta.
+     *       ```json
+     *       {
+     *         "dateStart": "YYYY-MM-DD",
+     *         "dateEnd": "YYYY-MM-DD"
+     *       }
+     *       ```
+     *       Entrambi gli attributi sono opzionali.
+     *     responses:
+     *       '200':
+     *         description: Il consumo in kWh dei dispositivi nella stanza.
+     *       '404':
+     *         description: "Nessuna stanza con quell'ID è stato trovata."
+     *       '400':
+     *         description: L'ID inserito è invalido.
+     */
     app.get("/stanze/:id/consumo", (req, res) => {
       let id;
       try {
@@ -332,6 +386,33 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
         .catch(err => res.send(err));
     });
 
+    /**
+     * @openapi
+     * /utenti/{email_utente}/consumo:
+     *   get:
+     *     summary: Restituisce i kWh consumati in un periodo di tempo da un utente.
+     *     parameters:
+     *       - name: email_utente
+     *         in: path
+     *         required: true
+     *         description: L'email del'utente.
+     *     description: |
+     *       Restituisce i kWh consumati da tutti i dispositivi appartenenti ad un utente. Si possono anche specificare la data di inizio e di fine nel body della richiesta.
+     *       ```json
+     *       {
+     *         "dateStart": "YYYY-MM-DD",
+     *         "dateEnd": "YYYY-MM-DD"
+     *       }
+     *       ```
+     *       Entrambi gli attributi sono opzionali.
+     *     responses:
+     *       '200':
+     *         description: Il consumo in kWh dei dispositivi dell'utente.
+     *       '404':
+     *         description: "Nessun utente con quell'email è stato trovato."
+     *       '400':
+     *         description: L'email inserita è invalida.
+     */
     app.get("/utenti/:id/consumo", (req, res) => {
     });
 
