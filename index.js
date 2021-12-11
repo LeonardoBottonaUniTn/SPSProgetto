@@ -22,12 +22,12 @@ const swaggerUI = require ('swagger-ui-express');
 const swaggerOptions = {
     swaggerDefinition: {
         info: {
-            title: "Customer API",
-            description: "Customer API Information",
+            title: "Smart Property System API",
+            description: "Smart Property System API Information",
             contact: {
                 name: "Leonardo Bottona"
             },
-            servers: ["http://localhost/49146"]
+            servers: ["http://localhost:49146"]
         }
     },
     apis: ["index.js"]
@@ -64,7 +64,13 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
       return;
     }
 
-    app.post('/dispositivo', (req, res) => {
+    const getUser = req => {
+
+    };
+
+    /* DISPOSITIVI */
+
+    app.post('/dispositivi', (req, res) => {
       const db = client.db(DATABASE);
       const collection = db.collection('dispositivo');
       collection.insertOne(req.body)
@@ -74,13 +80,13 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
         .catch(error => console.error(error));
     });
 
-    app.get('/dispositivo', (req, res) => {
+    app.get('/dispositivi', (req, res) => {
       const db = client.db(DATABASE);
       const cursor = db.collection('dispositivo').find();
       cursor.toArray().then(results => res.json(results));
     });
 
-    app.get('/dispositivo/:id', (req, res) => {
+    app.get('/dispositivi/:id', (req, res) => {
       let id;
       try {
         id = MongoDB.ObjectId(req.params.id);
@@ -95,7 +101,7 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
         .catch(err => res.send(err));
     });
 
-    app.delete("/dispositivo/:id", (req, res) => {
+    app.delete("/dispositivi/:id", (req, res) => {
       let id;
       try {
         id = MongoDB.ObjectId(req.params.id);
@@ -106,6 +112,65 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
 
       const db = client.db(DATABASE);
       db.collection('dispositivo').deleteOne({ "_id": id })
+        .then(results => res.json(results))
+        .catch(err => res.send(err));
+    });
+
+    /* CONSUMI */
+
+    app.get("/consumi/proprieta/:id", (req, res) => {
+    });
+    app.get("/consumi/stanze/:id", (req, res) => {
+    });
+    app.get("/consumi/dispositivi/:id", (req, res) => {
+    });
+    app.get("/consumi/utenti/:id", (req, res) => {
+    });
+
+    /* TRIGGER */
+
+    app.get("/trigger", (req, res) => {
+      const db = client.db(DATABASE);
+      const cursor = db.collection('trigger').find();
+      cursor.toArray().then(results => res.json(results));
+    });
+
+    app.get("/trigger/:id", (req, res) => {
+      let id;
+      try {
+        id = MongoDB.ObjectId(id);
+      } catch(exc) {
+        res.json({ errore: "ID del trigger invalido." });
+        return;
+      }
+
+      const db = client.db(DATABASE);
+      cursor = db.collection('trigger').findOne(id)
+        .then(result => res.json(result))
+        .catch(err => res.json(err));
+    });
+
+    app.post("/trigger", (req, res) => {
+      const db = client.db(DATABASE);
+      const collection = db.collection('trigger');
+      collection.insertOne(req.body)
+        .then(result => {
+          res.send(result)
+        })
+        .catch(error => console.error(error));
+    });
+
+    app.delete("/trigger/:id", (req, res) => {
+      let id;
+      try {
+        id = MongoDB.ObjectId(req.params.id);
+      } catch(exc) {
+        res.json({ errore: "ID del dispositivo invalido."});
+        return;
+      }
+
+      const db = client.db(DATABASE);
+      db.collection('trigger').deleteOne({ "_id": id })
         .then(results => res.json(results))
         .catch(err => res.send(err));
     });
