@@ -37,19 +37,6 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 app.use ('/api-docs', swaggerUI.serve, swaggerUI.setup (swaggerDocs));
 
-app.listen(49146, () => {
-    //MongoDB connection
-    MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
-    useUnifiedTopology: true}, (error, client) => {
-        if(error){
-            console.log("Error connecting at the MongoDB: "+ error);
-        }else{
-            database = client.db(DATABASE);
-            console.log("MongoDB Connection Successfull");
-        }
-    })
-});
-
 var cors = require('cors');
 app.use(cors());
 
@@ -405,4 +392,6 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
         .then(results => res.json(results))
         .catch(err => res.send(err));
     });
-})
+});
+
+app.listen(49146, () => console.log("Server started"));
