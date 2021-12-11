@@ -54,81 +54,199 @@
             </div>
             
         </nav>
+
+        <!-- Button trigger modal -->
+        <div class="position-absolute bottom-0 start-50 translate-middle">
+            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#aggiuntaDispositivo">
+                +
+            </button>
+        </div>
+
+        <!-- POP UP PER L'AGGIUNTA DEL DISPOSITIVO -->
+        <div class="modal fade" id="aggiuntaDispositivo" tabindex="-1" aria-labelledby="aggiuntaDispositivoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="aggiuntaDispositivo">Aggiunta Dispositivo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Categoria</label>
+                            <select class="form-select" id="inputGroupSelect01">
+                                <option selected>Choose...</option>
+                                <option value="1"><i class="fas fa-lightbulb" style="color: Y;"></i> Luce</option>
+                                <option value="2">Frigorifero</option>
+                                <option value="3">Lavatrice</option>
+                                <option value="4">Google Home</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Nome del dispositivo" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Stanza</label>
+                            <select class="form-select" id="inputGroupSelect01">
+                                <option selected>Nessuna</option>
+                                <option value="1">Bagno</option>
+                                <option value="2">Soggiorno</option>
+                                <option value="3">Cucina</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Proprietà</label>
+                            <select class="form-select" id="inputGroupSelect01">
+                                <option selected>Nessuna</option>
+                                <option value="1">Proprietà x</option>
+                                <option value="2">Proprietà y</option>
+                                <option value="3">Proprietà z</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Chiudi</button>
+                        <button type="button" class="btn btn-outline-secondary">Salva</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- POP UP PER LA MODIFICA DEL DISPOSITIVO -->
+        <div class="modal fade" id="modificaDispositivo" tabindex="-1" aria-labelledby="modificaDispositivoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modificaDispositivo">Modifica dispositivo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Categoria</label>
+                            <select class="form-select" id="inputGroupSelect01">
+                                <option selected>Choose...</option>
+                                <option value="1"><i class="fas fa-lightbulb" style="color: Y;"></i> Luce</option>
+                                <option value="2">Frigorifero</option>
+                                <option value="3">Lavatrice</option>
+                                <option value="4">Google Home</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Nome del dispositivo" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Stanza</label>
+                            <select class="form-select" id="inputGroupSelect01">
+                                <option selected>Nessuna</option>
+                                <option value="1">Bagno</option>
+                                <option value="2">Soggiorno</option>
+                                <option value="3">Cucina</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Proprietà</label>
+                            <select class="form-select" id="inputGroupSelect01">
+                                <option selected>Nessuna</option>
+                                <option value="1">Proprietà x</option>
+                                <option value="2">Proprietà y</option>
+                                <option value="3">Proprietà z</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Chiudi</button>
+                        <button type="button" class="btn btn-outline-secondary">Salva</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- POP UP PER LA CONFERMA ELIMINAZIONE -->
+        <div class="modal" id="eliminaDispositivo" tabindex="-1" aria-labelledby="eliminaDispositivoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Conferma</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Sei sicuro di voler eliminare il dispositivo?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Chiudi</button>
+                        <button type="button" class="btn btn-outline-danger">Elimina</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         
         <!--CONTAINER SCHEDE DEI DISPOSITIVI-->
         <div class="container my-5">
             <div class="row gap-3 justify-content-md-center">
-              <div class="col">
-                  <div class="card" href="#" style="width:18rem">
-                    <div class="card-body">
-                        <i class="fa-light fa-lightbulb"></i>   <!-- icona non funzionante (cosa sto sbagliando?)-->
-                        <h5 class="card-title">NomeDisp</h5>
-                        <p class="card-text">
-                            Stanza: <br/>
-                            Proprietà:
-                        </p>
-                        <div class="container">
-                            <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;">Modifica</a>
-                            <a href="#" class="btn btn-outline-danger btn-sm"><img src="/Immagini/TrashVero.png" style="width: 22px; "></a>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width:18rem">
-                    <div class="card-body">
-                        <img src="">
-                        <h5 class="card-title">NomeDisp</h5>
-                        <p class="card-text">
-                            Nome dispositivo: Carlo <br/>
-                            Livello soglia: altruista
-                        </p>
-                        <div class="container">
-                            <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;">Modifica</a>
-                            <a href="#" class="btn btn-outline-danger btn-sm"><img src="/Immagini/TrashVero.png" style="width: 22px; "></a>
+                <div class="col">
+                    <div class="card" href="#" style="width:18rem">
+                        <div class="card-body">
+                            <i class="fas fa-lightbulb" style="color: Y;"></i> Luce
+                            <h5 class="card-title">NomeDisp</h5>
+                            <p class="card-text">
+                                Stanza: <br/>
+                                Proprietà:
+                            </p>
+                            <div class="container">
+                                <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaDispositivo">Modifica</a>
+                                <a href="#" class="btn btn-outline-danger btn-sm " data-bs-toggle="modal" data-bs-target="#eliminaDispositivo"><img src="/Immagini/TrashVero.png" style="width: 22px; "></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width:18rem">
-                    <div class="card-body">
-                        <img src="">
-                        <h5 class="card-title">NomeDisp</h5>
-                        <p class="card-text">
-                            Nome dispositivo: Carlo <br/>
-                            Livello soglia: altruista
-                        </p>
-                        <div class="container">
-                            <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;">Modifica</a>
-                            <a href="#" class="btn btn-outline-danger btn-sm"><img src="/Immagini/TrashVero.png" style="width: 22px; "></a>
+                <div class="col">
+                    <div class="card" style="width:18rem">
+                        <div class="card-body">
+                            <i class="far fa-snowflake"></i> Frigorifero
+                            <h5 class="card-title">NomeDisp</h5>
+                            <p class="card-text">
+                                Stanza: <br/>
+                                Proprietà:
+                            </p>
+                            <div class="container">
+                                <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaDispositivo">Modifica</a>
+                                <a href="#" class="btn btn-outline-danger btn-sm " data-bs-toggle="modal" data-bs-target="#eliminaDispositivo"><img src="/Immagini/TrashVero.png" style="width: 22px; "></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-              </div>
-              <div class="col">
-                  <div class="card" style="width:18rem">
-                    <div class="card-body">
-                        <img src="">
-                        <h5 class="card-title">NomeDisp</h5>
-                        <p class="card-text">
-                            Nome dispositivo: Carlo <br/>
-                            Livello soglia: altruista
-                        </p>
-                        <div class="container">
-                            <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;">Modifica</a>
-                            <a href="#" class="btn btn-outline-danger btn-sm"><img src="/Immagini/TrashVero.png" style="width: 22px; "></a>
+                <div class="col">
+                    <div class="card" style="width:18rem">
+                        <div class="card-body">
+                            <i class="fab fa-google"></i> Google Home
+                            <h5 class="card-title">NomeDisp</h5>
+                            <p class="card-text">
+                                Stanza: <br/>
+                                Proprietà:
+                            </p>
+                            <div class="container">
+                                <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaDispositivo">Modifica</a>
+                                <a href="#" class="btn btn-outline-danger btn-sm " data-bs-toggle="modal" data-bs-target="#eliminaDispositivo"><img src="/Immagini/TrashVero.png" style="width: 22px; "></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card" style="width:18rem">
+                        <div class="card-body">
+                            <i class="fas fa-tshirt"></i> Lavatrice
+                            <h5 class="card-title">NomeDisp</h5>
+                            <p class="card-text">
+                                Stanza: <br/>
+                                Proprietà:
+                            </p>
+                            <div class="container">
+                                <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaDispositivo">Modifica</a>
+                                <a href="#" class="btn btn-outline-danger btn-sm " data-bs-toggle="modal" data-bs-target="#eliminaDispositivo"><img src="/Immagini/TrashVero.png" style="width: 22px; "></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
-        </div>
-        
-        <!--BOTTONE AGGIUNGI-->
-        <div class="position-absolute bottom-0 start-50 translate-middle">
-            <button type="button" class="btn btn-outline-secondary">+</button>
         </div>
         
         
