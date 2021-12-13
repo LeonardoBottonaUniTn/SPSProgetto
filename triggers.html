@@ -55,7 +55,7 @@
         </nav>
 
         <!-- Button trigger modal -->
-        <div class="position-absolute bottom-0 start-50 translate-middle">
+        <div class="position-absolute bottom-0 start-50 translate-middle" id="addButton">
             <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#aggiuntaTrigger">
                 +
             </button>
@@ -66,23 +66,23 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="aggiuntaTrigger">Trigger X</h5>
+                        <h5 class="modal-title" id="nomeTrigger">Trigger X</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="input-group mb-3">
                             
-                            <input type="text" class="form-control" placeholder="Nome del dispositivo" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" id="nuovoTriggerDispositivo" class="form-control" placeholder="Nome del dispositivo" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                         
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Livello soglia" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <input type="text" id="nuovoTriggerSoglia" class="form-control" placeholder="Livello soglia" aria-label="Recipient's username" aria-describedby="basic-addon2">
                             <span class="input-group-text" id="basic-addon2">kW/h</span>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Chiudi</button>
-                        <button type="button" class="btn btn-outline-secondary">Salva</button>
+                        <button type="button" id="saveNewtrigger" class="btn btn-outline-secondary">Salva</button>
                     </div>
                 </div>
             </div>
@@ -137,7 +137,7 @@
 
         <!--CONTAINER SCHEDE DEI TRIGGERS-->
         <div class="container my-5" id="ContainerCarte">
-            <div class="row gap-3 justify-content-md-center">
+            <div class="row gap-3 justify-content-md-center" id="rowContainer">
                 <div class="col">
                     <div class="card  mb-5 bg-body rounded" style="width:18rem">
                         <div class="card-body">
@@ -148,7 +148,7 @@
                             </p>
                             <div class="container">
                                 <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaTrigger">Modifica</a>
-                                <a href="#eliminaTrigger" id="eliminaTriggerButton" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTrigger"><img src="/Immagini/TrashVero.png" style="width: 22px; "></a>
+                                <a href="#eliminaTrigger" id="eliminaTriggerButton" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTrigger"><i class="fas fa-trash-alt" style="color: black; width: 18px;"></i></a>
                             </div>
                         </div>
                     </div>
@@ -163,7 +163,7 @@
                             </p>
                             <div class="container">
                                 <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaTrigger">Modifica</a>
-                                <a href="#eliminaTrigger" id="eliminaTriggerButton" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTrigger"><img src="/Immagini/TrashVero.png" style="width: 22px; "></a>
+                                <a href="#eliminaTrigger" id="eliminaTriggerButton" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTrigger"><i class="fas fa-trash-alt" style="color: black; width: 18px;"></i></a>
                             </div>
                         </div>
                     </div>
@@ -178,7 +178,7 @@
                             </p>
                             <div class="container">
                                 <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaTrigger">Modifica</a>
-                                <a href="#" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTrigger"><img src="/Immagini/TrashVero.png" style="width: 22px; "></a>
+                                <a href="#" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTrigger"><i class="fas fa-trash-alt" style="color: black; width: 18px;"></i></a>
                             </div>
                         </div>
                     </div>
@@ -193,7 +193,7 @@
                             </p>
                             <div class="container">
                                 <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaTrigger">Modifica</a>
-                                <a href="#" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTrigger"><img src="/Immagini/TrashVero.png" style="width: 22px; "></a>
+                                <a href="#" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTrigger"><i class="fas fa-trash-alt" style="color: black; width: 18px;"></i></a>
                             </div>
                         </div>
                     </div>
