@@ -10,20 +10,19 @@ console.log(btnID);
 console.log(btnModalID);
 let card;
 
-btnID.addEventListener('click', (event) => {
-    console.log(event.target.id);
-    if(event.target.id == btnID.id) {
-        const button = event.target;
-        card = button.parentNode.parentNode.parentNode.parentNode;
-    }
-});
-console.log(card);
+// btnID.addEventListener('click', (event) => {
+//     console.log(event.target.id);
+//     if(event.target.id == btnID.id) {
+//         const button = event.target;
+//         card = button.parentNode.parentNode.parentNode.parentNode;
+//     }
+// });
 
 btnModalID.addEventListener('click', (event) => {
-    console.log(event.target.id);
-        if(event.target.id == btnModalID.id) {
+    // console.log(event.target.id);
+    //     if(event.target.id == btnModalID.id) {
             card.remove();
-        }
+        // }
 });
 
 
@@ -34,17 +33,48 @@ let nomeDispositivo;
 let livelloSoglia;
 let iterator = 1;
 
-
+let triggers = [
+  {
+    _id: "61b1e65c3d370fa548dec3a2",
+    Dispositivo: {
+      _id: "61b1c4ef3d370fa548dec35b",
+      ConsumiDichiarati: 0.072,
+      DispositivoName: "LampadinaLed1",
+      Locazione: {
+        tipo: "stanza",
+        id: "61b1d34f3d370fa548dec37f"
+      }
+    },
+    Soglia: 1
+  },
+  {
+    _id: "61b1e70b3d370fa548dec3a4",
+    Dispositivo: {
+      _id: "61b1c8bf3d370fa548dec35e",
+      ConsumiDichiarati: 0.072,
+      DispositivoName: "LampadinaLed2",
+      Locazione: {
+        tipo: "stanza",
+        id: "61b1d3ff3d370fa548dec380"
+      }
+    },
+    Soglia: 130
+  }
+];
 
 addBtn.addEventListener('click', addNewTrigger);
 
+function eliminaCard(id) {
+  card = document.getElementById(id);
+}
+
 function addNewTrigger(){
-    
+
     nomeDispositivo = document.getElementById("nuovoTriggerDispositivo").value;
     livelloSoglia = document.getElementById("nuovoTriggerSoglia").value;
-    
+
     let newTriggerCard = '<div class="col">' +
-                    '<div class="card  mb-5 bg-body rounded" style="width:18rem">' +
+                    '<div class="card mb-5 bg-body rounded" style="width:18rem">' +
                         '<div class="card-body">' +
                             '<h5 class="card-title"> Trigger ' + iterator++ + '</h5>' +
                             '<p class="card-text">' +
@@ -58,7 +88,7 @@ function addNewTrigger(){
                         '</div>' +
                     '</div>' +
                 '</div>';
-    
+
     document.getElementById("rowContainer").innerHTML += newTriggerCard;
     //var n = document.createTextNode(newTriggerCard);
     //document.getElementById("rowContainer").appendChild(n);
