@@ -82,14 +82,14 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Chiudi</button>
-                        <button type="button" id="saveNewtrigger" class="btn btn-outline-secondary">Salva</button>
+                        <button type="button" id="saveNewtrigger" class="btn btn-outline-secondary" data-bs-dismiss="modal">Salva</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- POP UP PER LA MODIFICA DEL TRIGGER -->
-        <div class="modal fade" id="modificaTrigger" tabindex="-1" aria-labelledby="modificaTriggerLabel" aria-hidden="true">
+        <div class="modal fade" id="modificaTriggerModal" tabindex="-1" aria-labelledby="modificaTriggerLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -109,7 +109,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Chiudi</button>
-                        <button type="button" class="btn btn-outline-secondary">Salva</button>
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Salva</button>
                     </div>
                 </div>
             </div>
@@ -128,16 +128,19 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Chiudi</button>
-                        <button type="button" id="eliminaTrigger" class="btn btn-outline-danger">Elimina</button>
+                        <button type="button" id="eliminaTrigger" class="btn btn-outline-danger" data-bs-dismiss="modal">Elimina</button>
                     </div>
                 </div>
             </div>
         </div>
 
-
+        
         <!--CONTAINER SCHEDE DEI TRIGGERS-->
         <div class="container my-5" id="ContainerCarte">
             <div class="row gap-3 justify-content-md-center" id="rowContainer">
+                <script src="triggers.js">
+                    addTriggersCard();
+                </script>
                 <div class="col" id="61b1e65c3d370fa548dec3a2">
                     <div class="card  mb-5 bg-body rounded" style="width:18rem">
                         <div class="card-body">
@@ -147,8 +150,8 @@
                                 Livello soglia: altruista
                             </p>
                             <div class="container">
-                                <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaTrigger">Modifica</a>
-                                <a href="#eliminaTrigger" onclick="eliminaCard('61b1e65c3d370fa548dec3a2')" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTrigger"><i class="fas fa-trash-alt" style="color: black; width: 18px;"></i></a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaTriggerModal">Modifica</a>
+                                <a href="#eliminaTriggerModal" onclick="eliminaCard('61b1e65c3d370fa548dec3a2')" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTrigger"><i class="fas fa-trash-alt" style="color: black; width: 18px;"></i></a>
                             </div>
                         </div>
                     </div>
@@ -162,8 +165,8 @@
                                 Livello soglia: altruista
                             </p>
                             <div class="container">
-                                <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaTrigger">Modifica</a>
-                                <a href="#eliminaTrigger"  onclick="eliminaCard('61b1e70b3d370fa548dec3a4')" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTrigger"><i class="fas fa-trash-alt" style="color: black; width: 18px;"></i></a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaTriggerModal">Modifica</a>
+                                <a href="#eliminaTriggerModal"  onclick="eliminaCard('61b1e70b3d370fa548dec3a4')" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTrigger" ><i class="fas fa-trash-alt" style="color: black; width: 18px;"></i></a>
                             </div>
                         </div>
                     </div>
@@ -177,7 +180,7 @@
                                 Livello soglia: altruista
                             </p>
                             <div class="container">
-                                <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaTrigger">Modifica</a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaTriggerModal">Modifica</a>
                                 <a href="#" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTrigger"><i class="fas fa-trash-alt" style="color: black; width: 18px;"></i></a>
                             </div>
                         </div>
@@ -192,7 +195,7 @@
                                 Livello soglia: altruista
                             </p>
                             <div class="container">
-                                <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaTrigger">Modifica</a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaTriggerModal">Modifica</a>
                                 <a href="#" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTrigger"><i class="fas fa-trash-alt" style="color: black; width: 18px;"></i></a>
                             </div>
                         </div>
