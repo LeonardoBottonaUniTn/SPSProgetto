@@ -165,11 +165,11 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
      *       Aggiunge un dispositivo con i dati passati. Il body della richiesta deve contenere un JSON come segue:
      *       ```json
      *       {
-     *         ConsumiDichiarati: "float"
-     *         DispositivoName: "string",
-     *         Locazione: {
-     *           tipo: "stanza|proprietà",
-     *           id: "string",
+     *         "ConsumiDichiarati": "float"
+     *         "DispositivoName": "string",
+     *         "Locazione": {
+     *           "tipo": "stanza|proprietà",
+     *           "id": "string",
      *         }
      *       }
      *       ```
@@ -203,11 +203,11 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
      *       Modifica i dati passati. Il body della richiesta deve contenere un JSON come segue:
      *       ```json
      *       {
-     *         ConsumiDichiarati: "float"
-     *         DispositivoName: "string",
-     *         Locazione: {
-     *           tipo: "stanza|proprietà",
-     *           id: "string",
+     *         "ConsumiDichiarati": "float"
+     *         "DispositivoName": "string",
+     *         "Locazione": {
+     *           "tipo": "stanza|proprietà",
+     *           "id": "string",
      *         }
      *       }
      *       ```
@@ -227,6 +227,13 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
         res.status(400).json({ errore: "ID del dispositivo invalido."});
         return;
       }
+
+      const db = client.db(DATABASE);
+      db.collection('dispositivo').updateOne({ _id: id }, { $set: req.body })
+        .then(result => {
+          res.send(result)
+        })
+        .catch(error => { console.error(error); res.status(500).send(error) });
     });
 
     /**
@@ -454,12 +461,39 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
 
     /* TRIGGER */
 
+    /**
+     * @openapi
+     * /trigger:
+     *   get:
+     *     summary: Restituisce una lista di trigger.
+     *     responses:
+     *       '200':
+     *         description: Un Array JSON di trigger.
+     */
     app.get("/trigger", (req, res) => {
       const db = client.db(DATABASE);
       const cursor = db.collection('trigger').find();
       cursor.toArray().then(results => res.json(results));
     });
 
+    /**
+     * @openapi
+     * /trigger/{id_trigger}:
+     *   get:
+     *     summary: Restituisce un trigger.
+     *     parameters:
+     *       - name: id_trigger
+     *         in: path
+     *         required: true
+     *         description: L'ID del trigger.
+     *     responses:
+     *       '200':
+     *         description: Un trigger.
+     *       '404':
+     *         description: "`null`: Nessun trigger con quell'ID è stato trovato."
+     *       '400':
+     *         description: L'ID inserito è invalido.
+     */
     app.get("/trigger/:id", (req, res) => {
       let id;
       try {
@@ -475,6 +509,26 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
         .catch(err => res.json(err));
     });
 
+    /**
+     * @openapi
+     * /trigger:
+     *   post:
+     *     summary: Modifica un trigger.
+     *     description: |
+     *       Aggiunge un trigger con i dati passati. Il body della richiesta deve contenere un JSON come segue:
+     *       ```json
+     *       {
+     *         "Dispositivo": "string"
+     *         "Soglia": "float",
+     *         "NomeTrigger": "string"
+     *       }
+     *       ```
+     *     responses:
+     *       '201':
+     *         description: Il trigger è stato aggiunto.
+     *       '400':
+     *         description: I dati inseriti non sono corretti.
+     */
     app.post("/trigger", (req, res) => {
       const db = client.db(DATABASE);
       const collection = db.collection('trigger');
@@ -485,6 +539,33 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
         .catch(error => console.error(error));
     });
 
+    /**
+     * @openapi
+     * /trigger/{id_trigger}:
+     *   put:
+     *     summary: Modifica un trigger.
+     *     parameters:
+     *       - name: id_trigger
+     *         in: path
+     *         required: true
+     *         description: L'ID del trigger.
+     *     description: |
+     *       Modifica i dati passati. Il body della richiesta deve contenere un JSON come segue:
+     *       ```json
+     *       {
+     *         "Dispositivo": "string"
+     *         "Soglia": "float",
+     *         "NomeTrigger": "string"
+     *       }
+     *       ```
+     *     responses:
+     *       '200':
+     *         description: Il trigger è stato modificato.
+     *       '400':
+     *         description: L'ID inserito è invalido o non sono corretti i dati.
+     *       '404':
+     *         description: Il trigger non esiste.
+     */
     app.put("/trigger/:id", (req, res) => {
       let id;
       try {
@@ -493,8 +574,31 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
         res.status(400).json({ errore: "ID del dispositivo invalido."});
         return;
       }
+
+      const db = client.db(DATABASE);
+      db.collection('trigger').updateOne({ _id: id }, { $set: req.body })
+        .then(result => {
+          res.send(result)
+        })
+        .catch(error => { console.error(error); res.status(500).send(error) });
     });
 
+    /**
+     * @openapi
+     * /trigger/{id_trigger}:
+     *   delete:
+     *     summary: Cancella un trigger.
+     *     parameters:
+     *       - name: id_trigger
+     *         in: path
+     *         required: true
+     *         description: L'ID del trigger.
+     *     responses:
+     *       '200':
+     *         description: Il trigger richiesto non esiste più.
+     *       '400':
+     *         description: L'ID inserito è invalido.
+     */
     app.delete("/trigger/:id", (req, res) => {
       let id;
       try {
