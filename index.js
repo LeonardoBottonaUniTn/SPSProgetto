@@ -124,6 +124,42 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
       } catch(exc) { return false; }
     }
 
+    const expandDispositivo = async disp => {
+      if(disp === null) return null;
+
+      const db = client.db(DATABASE);
+      let Locazione;
+      if(disp.Locazione.tipo === "stanza") {
+        let stanza = await db.collection("stanza").findOne(MongoDB.ObjectId(disp.Locazione.id));
+        Locazione = {
+          tipo: disp.Locazione.tipo,
+          stanza: await expandStanza(stanza),
+        };
+      }
+      else if(disp.Locazione.tipo === "proprietà") {
+        let proprieta = await db.collection("proprieta").findOne(MongoDB.ObjectId(disp.Locazione.id));
+        Locazione = {
+          tipo: disp.Locazione.tipo,
+          proprieta,
+        };
+      }
+
+      return {
+        ...disp,
+        Locazione,
+      };
+    }
+
+    const expandStanza = async stanza => {
+      if(stanza === null) return null;
+
+      const db = client.db(DATABASE);
+      return {
+        ...stanza,
+        Proprieta: await await db.collection("proprietà").findOne(MongoDB.ObjectId(stanza.Proprieta))
+      }
+    }
+
     /**
      * @openapi
      * /dispositivi:
@@ -136,7 +172,11 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
     app.get('/dispositivi', async (req, res) => {
       const db = client.db(DATABASE);
       const cursor = db.collection('dispositivo').find();
-      cursor.toArray().then(results => res.json(results));
+      cursor.toArray().then(async results => {
+        for(let i = 0; i < results.length; i++)
+          results[i] = await expandDispositivo(results[i])
+        res.json(results);
+      });
     });
 
     /**
@@ -162,13 +202,14 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
       try {
         id = MongoDB.ObjectId(req.params.id);
       } catch(exc) {
-        res.status(400).json({ errore: "ID del dispositivo invalido."});
+        res.status(400).json({ errore: "ID del dispositivo invalido." });
         return;
       }
 
       const db = client.db(DATABASE);
       db.collection('dispositivo').findOne(id)
-        .then(results => res.status(results ? 200 : 404).json(results))
+        .then(result => expandDispositivo(result))
+        .then(result => res.status(result ? 200 : 404).json(result))
         .catch(err => res.send(err));
     });
 
@@ -364,6 +405,21 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
 
     /**
      * @openapi
+     * /proprieta:
+     *   get:
+     *     summary: Restituisce una lista di proprietà.
+     *     responses:
+     *       '200':
+     *         description: Un Array JSON di proprietà.
+     */
+    app.get('/proprieta', async (req, res) => {
+      const db = client.db(DATABASE);
+      const cursor = db.collection('proprietà').find();
+      cursor.toArray().then(results => res.json(results));
+    });
+
+    /**
+     * @openapi
      * /proprieta/{id_proprietà}/consumo:
      *   get:
      *     summary: Restituisce i kWh consumati in un periodo di tempo da una proprietà.
@@ -435,6 +491,25 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
         })
         .then(calculateResults(res))
         .catch(err => res.send(err));
+    });
+
+    /**
+     * @openapi
+     * /stanze:
+     *   get:
+     *     summary: Restituisce una lista di stanze.
+     *     responses:
+     *       '200':
+     *         description: Un Array JSON di stanze.
+     */
+    app.get('/stanze', async (req, res) => {
+      const db = client.db(DATABASE);
+      const cursor = db.collection('stanza').find();
+      cursor.toArray().then(async results => {
+        for(let i = 0; i < results.length; i++)
+          results[i] = await expandStanza(results[i])
+        res.json(results);
+      });
     });
 
     /**
@@ -560,8 +635,6 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
         .catch(errore => res.status(400).json({ errore }));
     });
 
-    /* TRIGGER */
-
     /**
      * @openapi
      * /trigger:
@@ -588,7 +661,14 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
           }
         }
       ]);
-      cursor.toArray().then(results => res.json(results));
+      cursor.toArray().then(async results => {
+        for(let i = 0; i < results.length; i++) {
+          results[i] = {
+            ...results[i], Dispositivo: await expandDispositivo(results[i].Dispositivo)
+          }
+        }
+        res.json(results);
+      });
     });
 
     /**
@@ -638,6 +718,7 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
       ]);
 
       cursor.next()
+        .then(async result => ({ ...result, Dispositivo: await expandDispositivo(result.Dispositivo) }))
         .then(result => res.status(result ? 200 : 404).json(result))
         .catch(err => res.status(500).json(err));
     });
