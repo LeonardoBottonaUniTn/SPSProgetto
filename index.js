@@ -84,7 +84,7 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
         if(typeof(body.NomeTrigger) !== "string") return `NomeTrigger deve essere una stringa`;
       }
       else if(api === "dispositivi") {
-        const allowedKeys = ["ConsumiDichiarati", "DispositivoName", "Locazione"];
+        const allowedKeys = ["ConsumiDichiarati", "DispositivoName", "Locazione", "Tipo"];
         for(const key of Object.keys(body))
           if(!allowedKeys.includes(key)) return `Parametro sconosciuto: ${key}`;
         for(const key of allowedKeys)
@@ -108,6 +108,9 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
         }
         if(typeof(body.ConsumiDichiarati) !== "number") return `ConsumiDichiarati deve essere un numero`;
         if(typeof(body.DispositivoName) !== "string") return `DispositivoName deve essere una stringa`;
+        const allowedTypes = ["Luce", "Calore", "Lavaggio", "GoogleHome", "Frigo"];
+        if(typeof(body.Tipo) !== "string") return `Tipo deve essere una stringa`;
+        else if(!allowedTypes.includes(body.Tipo)) return `Tipo deve essere una stringa`;
       }
 
       return null;
