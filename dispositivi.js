@@ -2,115 +2,187 @@ let iterator = 0;
 let icona;
 
 //CASE PER LE ICONE
-/*function scegliIcona(categoria){
-
-    //const expr = 'Papayas';
+function scegliIcona(categoria){
+  console.log(categoria);
     switch (categoria) {
         case 'Google Home':
-            icona.innerHTML = <i class="fab fa-google"></i> + "Google Home";
-            break;
+            return '<i class="fab fa-google"></i>' + "Google Home";
         case 'Luce':
-            icona.innerHTML = <i class="fas fa-lightbulb" style="color: Y; "></i> + " Luce";
-            break;
+            return '<i class="fas fa-lightbulb" style="color: Y; "></i>' + " Luce";
         case 'Frigo':
-            icona.innerHTML = <i class="far fa-snowflake"></i> + " Frigorifero";
-            break;
+            return '<i class="far fa-snowflake"></i>' + " Frigorifero";
         case 'Caldo':
-            icona.innerHTML = <i class="fas fa-fire"></i> + " Calorifero";
-            break;
+            return '<i class="fas fa-fire"></i>' + " Calorifero";
         case 'Lavaggio':
-            icona.innerHTML = <i class="fas fa-tshirt"></i> + "Lavatrice";
-            break;
+            return '<i class="fas fa-tshirt"></i>' + "Lavatrice";
         default:
-        console.log(`Sorry, non so che cazzo vuoi inserire`);
+            return null;
     }
-};*/
+};
 
 let dispositivi = [
     {
-        _id: "61b1c4ef3d370fa548dec35b",
-        ConsumiDichiarati: 0.072,
-        DispositivoName: "LampadinaLed1",
-        Locazione: {
-            tipo: "stanza",
-            id: "61b1d34f3d370fa548dec37f"
-        }
+        "_id": "61b1c4ef3d370fa548dec35b",
+        "ConsumiDichiarati": 0.072,
+        "DispositivoName": "LampadinaLed1",
+        "Locazione": {
+            "tipo": "stanza",
+            "stanza": {
+                "_id": "61b1d34f3d370fa548dec37f",
+                "NomeStanza": "Salotto",
+                "Proprieta": {
+                    "_id": "61b1d2863d370fa548dec37b",
+                    "NomeProprieta": "myHome",
+                    "Utente": "leonardo.bottona@studenti.unitn.it"
+                }
+            }
+        },
+        "Tipo": "Luce"
     },
     {
-        _id: "61b1c7fa3d370fa548dec35d",
-        ConsumiDichiarati: 0.072,
-        DispositivoName: "LampadinaLed2",
-        Locazione: {
-            tipo: "stanza",
-            id: "61b1d3ff3d370fa548dec380"
-        }
+        "_id": "61b1c7fa3d370fa548dec35d",
+        "ConsumiDichiarati": 0.072,
+        "DispositivoName": "LampadinaLed2",
+        "Locazione": {
+            "tipo": "stanza",
+            "stanza": {
+                "_id": "61b1d3ff3d370fa548dec380",
+                "Proprieta": {
+                    "_id": "61b1d2863d370fa548dec37b",
+                    "NomeProprieta": "myHome",
+                    "Utente": "leonardo.bottona@studenti.unitn.it"
+                },
+                "NumeroDispositivi": 3,
+                "NomeStanza": "Cucina"
+            }
+        },
+        "Tipo": "Luce"
     },
     {
-        _id: "61b1c8bf3d370fa548dec35e",
-        ConsumiDichiarati: 105.6,
-        DispositivoName: "Scaldabagno",
-        Locazione: {
-            tipo: "stanza",
-            id: "61b1d5683d370fa548dec386"
-        }
+        "_id": "61b1c8bf3d370fa548dec35e",
+        "ConsumiDichiarati": 105.6,
+        "DispositivoName": "Scaldabagno",
+        "Locazione": {
+            "tipo": "stanza",
+            "stanza": {
+                "_id": "61b1d5683d370fa548dec386",
+                "NomeStanza": "Bagno",
+                "Proprieta": {
+                    "_id": "61b1d2863d370fa548dec37b",
+                    "NomeProprieta": "myHome",
+                    "Utente": "leonardo.bottona@studenti.unitn.it"
+                },
+                "NumeroDispositivi": 1
+            }
+        },
+        "Tipo": "Calore"
     },
     {
-        _id: "61b1caa93d370fa548dec361",
-        ConsumiDichiarati: 36,
-        DispositivoName: "StufaElettrica",
-        Locazione: {
-            tipo: "stanza",
-            id: "61b1d5683d370fa548dec386"
-        }
+        "_id": "61b1caa93d370fa548dec361",
+        "ConsumiDichiarati": 36,
+        "DispositivoName": "StufaElettrica",
+        "Locazione": {
+            "tipo": "stanza",
+            "stanza": {
+                "_id": "61b1d5683d370fa548dec386",
+                "NomeStanza": "Bagno",
+                "Proprieta": {
+                    "_id": "61b1d2863d370fa548dec37b",
+                    "NomeProprieta": "myHome",
+                    "Utente": "leonardo.bottona@studenti.unitn.it"
+                },
+                "NumeroDispositivi": 1
+            }
+        },
+        "Tipo": "Calore"
     },
     {
-        _id: "61b1cae43d370fa548dec362",
-        ConsumiDichiarati: 0.657,
-        DispositivoName: "LavatriceA",
-        Locazione: {
-            tipo: "stanza",
-            id: "61b1d53d3d370fa548dec385"
-        }
+        "_id": "61b1cae43d370fa548dec362",
+        "ConsumiDichiarati": 0.657,
+        "DispositivoName": "LavatriceA",
+        "Locazione": {
+            "tipo": "stanza",
+            "stanza": {
+                "_id": "61b1d53d3d370fa548dec385",
+                "NomeStanza": "Lavanderia",
+                "Proprieta": {
+                    "_id": "61b1d2863d370fa548dec37b",
+                    "NomeProprieta": "myHome",
+                    "Utente": "leonardo.bottona@studenti.unitn.it"
+                },
+                "NumeroDispositivi": 1
+            }
+        },
+        "Tipo": "Lavaggio"
     },
     {
-        _id: "61b1d6e73d370fa548dec391",
-        ConsumiDichiarati: 0.072,
-        DispositivoName: "LampadinaLed3",
-        Locazione: {
-            tipo: "stanza",
-            id: "61b1d3ff3d370fa548dec380"
-        }
+        "_id": "61b1d6e73d370fa548dec391",
+        "ConsumiDichiarati": 0.072,
+        "DispositivoName": "LampadinaLed3",
+        "Locazione": {
+            "tipo": "stanza",
+            "stanza": {
+                "_id": "61b1d3ff3d370fa548dec380",
+                "Proprieta": {
+                    "_id": "61b1d2863d370fa548dec37b",
+                    "NomeProprieta": "myHome",
+                    "Utente": "leonardo.bottona@studenti.unitn.it"
+                },
+                "NumeroDispositivi": 3,
+                "NomeStanza": "Cucina"
+            }
+        },
+        "Tipo": "Luce"
     },
     {
-        _id: "61b1d7e93d370fa548dec393",
-        ConsumiDichiarati: 0.0336,
-        DispositivoName: "GoogleHome",
-        Locazione: {
-            tipo: "stanza",
-            id: "61b1d3ff3d370fa548dec380"
-        }
+        "_id": "61b1d7e93d370fa548dec393",
+        "ConsumiDichiarati": 0.0336,
+        "DispositivoName": "GoogleHome",
+        "Locazione": {
+            "tipo": "stanza",
+            "stanza": {
+                "_id": "61b1d3ff3d370fa548dec380",
+                "Proprieta": {
+                    "_id": "61b1d2863d370fa548dec37b",
+                    "NomeProprieta": "myHome",
+                    "Utente": "leonardo.bottona@studenti.unitn.it"
+                },
+                "NumeroDispositivi": 3,
+                "NomeStanza": "Cucina"
+            }
+        },
+        "Tipo": "GoogleHome"
     },
     {
-        _id: "61b1d99a3d370fa548dec394",
-        ConsumiDichiarati: 0.84,
-        DispositivoName: "Frigorifero",
-        Locazione: {
-            tipo: "stanza",
-            id: "61b1d3ff3d370fa548dec380"
-        }
+        "_id": "61b1d99a3d370fa548dec394",
+        "ConsumiDichiarati": 0.84,
+        "DispositivoName": "Frigorifero",
+        "Locazione": {
+            "tipo": "stanza",
+            "stanza": {
+                "_id": "61b1d3ff3d370fa548dec380",
+                "Proprieta": {
+                    "_id": "61b1d2863d370fa548dec37b",
+                    "NomeProprieta": "myHome",
+                    "Utente": "leonardo.bottona@studenti.unitn.it"
+                },
+                "NumeroDispositivi": 3,
+                "NomeStanza": "Cucina"
+            }
+        },
+        "Tipo": "Frigo"
     }
 ];
 
 
-function addDispositiviCard(){  
-
+function addDispositiviCard(){
     let numeroDispositivi = dispositivi.length;
-    
+
     while(iterator < numeroDispositivi){
         let ExistingDispositivoCard =   '<div class="col" id="' + dispositivi[iterator]._id + '">'  +
                                             '<div class="card" href="#" style="width:18rem">' +
                                                 '<div class="card-body">' +
-                                                    icona +  //tipo dispositivo
+                                                    scegliIcona(dispositivi[iterator].Tipo) + 
                                                     '<h5 class="card-title">'+ dispositivi[iterator].DispositivoName + '</h5>' +
                                                     '<p class="card-text">' +
                                                         'Stanza: <br/>' +
@@ -123,7 +195,6 @@ function addDispositiviCard(){
                                                 '</div>' +
                                             '</div>' +
                                         '</div>' ;
-
         document.getElementById("rowContainer").innerHTML += ExistingDispositivoCard;
         iterator++;
     }
@@ -145,7 +216,7 @@ function eliminaCard(id) {
 btnModalID.addEventListener('click', (event) => {
     console.log(event.target.id);
     if(event.target.id == btnModalID.id) {
-    
+
         card.remove();
     }
 });
@@ -173,7 +244,7 @@ function addNewDispositivo(){
     proprietàDispositivoScelta = document.getElementById("inputGroupSelect012");
     proprietàDispositivo = proprietàDispositivoScelta.options[proprietàDispositivoScelta.selectedIndex].text;
     //console.log(proprietàDispositivo);
-    
+
     let newDispositivoCard =    '<div class="col" id="+">'  +    //manca il vuovo id generato
                                 '<div class="card" href="#" style="width:18rem">' +
                                     '<div class="card-body">' +
@@ -193,8 +264,8 @@ function addNewDispositivo(){
     iterator++;
     //console.log(newDispositivoCard);
     document.getElementById("rowContainer").innerHTML += newDispositivoCard;
-        
-}; 
+
+};
 
 
 
@@ -219,11 +290,11 @@ function reloadDispositiviCard(){
     document.getElementById("rowContainer").innerHTML = '';
     iterator = 0;
     let numeroDispositivi = dispositivi.length;
-    while(iterator < numeroDispositivi){  
+    while(iterator < numeroDispositivi){
         let ExistingDispositivoCard =   '<div class="col" id="' + dispositivi[iterator]._id + '">'  +
                                             '<div class="card" href="#" style="width:18rem">' +
                                                 '<div class="card-body">' +
-                                                    icona +  //tipo dispositivo
+                                                    scegliIcona(dispositivi[iterator].Tipo)
                                                     '<h5 class="card-title">'+ dispositivi[iterator].DispositivoName + '</h5>' +
                                                     '<p class="card-text">' +
                                                         'Stanza: <br/>' +
@@ -236,7 +307,7 @@ function reloadDispositiviCard(){
                                                 '</div>' +
                                             '</div>' +
                                         '</div>' ;
-        
+
         document.getElementById("rowContainer").innerHTML += ExistingDispositivoCard;
         iterator++;
     }
@@ -256,9 +327,9 @@ function modifyDispositivo(){
     let modificaProprietàDispositivoScelta = document.getElementById("inputGroupSelect023");
     let modificaProprietàDispositivo = modificaProprietàDispositivoScelta.options[modificaProprietàDispositivoScelta.selectedIndex].text;
     //console.log(modificaProprietàDispositivo);
-    
+
     dispositivi[i].DispositivoName = modificaNomeDispositivo;
     //da finire in bare ai cambiamenti sul db
-    
+
     reloadTriggersCard()
 }
