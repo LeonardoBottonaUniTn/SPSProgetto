@@ -182,7 +182,7 @@ function addDispositiviCard(){
         let ExistingDispositivoCard =   '<div class="col" id="' + dispositivi[iterator]._id + '">'  +
                                             '<div class="card" href="#" style="width:18rem">' +
                                                 '<div class="card-body">' +
-                                                    scegliIcona(dispositivi[iterator].Tipo) + 
+                                                    scegliIcona(dispositivi[iterator].Tipo) +
                                                     '<h5 class="card-title">'+ dispositivi[iterator].DispositivoName + '</h5>' +
                                                     '<p class="card-text">' +
                                                         'Stanza: <br/>' +
