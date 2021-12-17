@@ -1,10 +1,9 @@
-
 let iterator = 0;
 
 
 //Prende e stampa i trigger già esistenti
 
- var triggers = [
+var triggers = [
   {
     _id: "61b1e65c3d370fa548dec3a2",
     Dispositivo: {
@@ -39,7 +38,7 @@ function addTriggersCard(){
   let numeroTriggers = triggers.length;
   
   
-  while(iterator <= numeroTriggers){
+  while(iterator < numeroTriggers){
     let ExistingTriggerCard = '<div class="col" id="' + triggers[iterator]._id + '">' +
                       '<div class="card mb-5 bg-body rounded" style="width:18rem">' +
                           '<div class="card-body">' +
@@ -50,7 +49,7 @@ function addTriggersCard(){
                               '</p>' +
                               '<div class="container">' +
                                   '<a href="#" onclick="modificaCard(\'' + triggers[iterator]._id + '\')" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaTriggerModal">Modifica</a>' +
-                                  '<a href="#eliminaTrigger" onclick="eliminaCard(\'' + triggers[iterator]._id + '\')" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTrigger"><i class="fas fa-trash-alt" style="color: black; width: 18px;"></i></a>' +
+                                  '<a href="#eliminaTriggerModal" onclick="eliminaCard(\'' + triggers[iterator]._id + '\')" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTriggerModal"><i class="fas fa-trash-alt" style="color: black; width: 18px;"></i></a>' +
                               '</div>' +
                           '</div>' +
                       '</div>' +
@@ -82,7 +81,7 @@ function eliminaCard(id) {
 }
 
 btnModalID.addEventListener('click', (event) => {
-    // console.log(event.target.id);
+    console.log(event.target.id);
           if(event.target.id == btnModalID.id) {
             
             card.remove();
@@ -104,21 +103,21 @@ function addNewTrigger(){
   nomeDispositivo = document.getElementById("nuovoTriggerDispositivo").value;
   livelloSoglia = document.getElementById("nuovoTriggerSoglia").value;
   
-  let newTriggerCard = '<div class="col"> id="' +  /*idGeneratoInQualcheMdodo*/ +
-                          '<div class="card mb-5 bg-body rounded" style="width:18rem">' +
+  let newTriggerCard = '<div class="col" '/*id="' +  idGeneratoInQualcheMdodo*/ + '">' +
+                            '<div class="card mb-5 bg-body rounded " style="width:18rem">' +
                               '<div class="card-body">' +
                                 '<h5 class="card-title"> Trigger ' + nomeDispositivo + '</h5>' +
                                 '<p class="card-text">' +
                                 'Nome dispositivo : '+ nomeDispositivo + '<br/>' +
                                 'Livello soglia : ' + livelloSoglia +
                                 '</p>' +
-                              '<div class="container">' +
-                              '<a href="#" onclick="modificaCard(\'' + /*idGeneratoInQualcheModo*/ + '\')" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaTriggerModal">Modifica</a>' +
-                                  '<a href="#eliminaTrigger" onclick="eliminaCard(\'' /*idGeneratoInQualcheModo*/ + '\')" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTrigger"><i class="fas fa-trash-alt" style="color: black; width: 18px;"></i></a>' +
+                                '<div class="container">' +
+                                  '<a href="#" onclick="modificaCard('  /*idGeneratoInQualcheModo*/ + ')" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaTriggerModal">Modifica</a>' +
+                                  '<a href="#eliminaTriggerModal" onclick="eliminaCard(' /*idGeneratoInQualcheModo*/ + ')" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTrigger"><i class="fas fa-trash-alt" style="color: black; width: 18px;"></i></a>' +
+                                '</div>' +
+                              '</div>' +
                             '</div>' +
-                          '</div>' +
-                        '</div>' +
-                      '</div>';
+                          '</div>';
     iterator++;
     console.log(newTriggerCard);
     document.getElementById("rowContainer").innerHTML += newTriggerCard;
@@ -148,7 +147,7 @@ function reloadTriggersCard(){
   document.getElementById("rowContainer").innerHTML = '';
   iterator = 0;
   let numeroTriggers = triggers.length;
-  while(iterator <= numeroTriggers){  
+  while(iterator < numeroTriggers){  
     let ExistingTriggerCard = '<div class="col" id="' + triggers[iterator]._id + '">' +
                                     '<div class="card mb-5 bg-body rounded" style="width:18rem">' +
                                       '<div class="card-body">' +
@@ -159,7 +158,7 @@ function reloadTriggersCard(){
                                         '</p>' +
                                         '<div class="container">' +
                                           '<a href="#" onclick="modificaCard(\'' + triggers[iterator]._id + '\')" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaTriggerModal">Modifica</a>' +
-                                          '<a href="#eliminaTrigger" onclick="eliminaCard(\'' + triggers[iterator]._id + '\')" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTrigger"><i class="fas fa-trash-alt" style="color: black; width: 18px;"></i></a>' +
+                                          '<a href="#eliminaTriggerModal" onclick="eliminaCard(\'' + triggers[iterator]._id + '\')" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTriggerModal"><i class="fas fa-trash-alt" style="color: black; width: 18px;"></i></a>' +
                                         '</div>' +
                                       '</div>' +
                                   '</div>' +

@@ -110,7 +110,7 @@
         </div>
         
         <!-- POP UP PER LA CONFERMA ELIMINAZIONE -->
-        <div class="modal" id="eliminaTrigger" tabindex="-1" aria-labelledby="eliminaTriggerLabel" aria-hidden="true">
+        <div class="modal" id="eliminaTriggerModal" tabindex="-1" aria-labelledby="eliminaTriggerLabel" data-bs-target="#staticBackdrop" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -138,7 +138,7 @@
         </div>
 
         <!-- Button trigger modal -->
-        <div class="position-absolute bottom-0 start-50 translate-middle " id="addButton">
+        <div class="text-center" id="addButton">
             <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#aggiuntaTrigger">
                 +
             </button>

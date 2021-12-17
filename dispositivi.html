@@ -55,12 +55,7 @@
             
         </nav>
 
-        <!-- Button trigger modal -->
-        <div class="position-absolute bottom-0 start-50 translate-middle">
-            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#aggiuntaDispositivo">
-                +
-            </button>
-        </div>
+        
 
         <!-- POP UP PER L'AGGIUNTA DEL DISPOSITIVO -->
         <div class="modal fade" id="aggiuntaDispositivo" tabindex="-1" aria-labelledby="aggiuntaDispositivoLabel" aria-hidden="true">
@@ -82,11 +77,11 @@
                             </select>
                         </div>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Nome del dispositivo" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" id="nuovoNomeDispositivo" class="form-control" placeholder="Nome del dispositivo" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="inputGroupSelect01">Stanza</label>
-                            <select class="form-select" id="inputGroupSelect01">
+                            <label class="input-group-text" for="inputGroupSelect011" id="nuovoDispositivoStanza">Stanza</label>
+                            <select class="form-select" id="inputGroupSelect011">
                                 <option selected>Nessuna</option>
                                 <option value="1">Bagno</option>
                                 <option value="2">Soggiorno</option>
@@ -94,8 +89,8 @@
                             </select>
                         </div>
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="inputGroupSelect01">Proprietà</label>
-                            <select class="form-select" id="inputGroupSelect01">
+                            <label class="input-group-text" for="inputGroupSelect012" id="nuovoDispositivoProprietà">Proprietà</label>
+                            <select class="form-select" id="inputGroupSelect012">
                                 <option selected>Nessuna</option>
                                 <option value="1">Proprietà x</option>
                                 <option value="2">Proprietà y</option>
@@ -105,24 +100,24 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Chiudi</button>
-                        <button type="button" class="btn btn-outline-secondary">Salva</button>
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" id="saveNewDispositivo">Salva</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- POP UP PER LA MODIFICA DEL DISPOSITIVO -->
-        <div class="modal fade" id="modificaDispositivo" tabindex="-1" aria-labelledby="modificaDispositivoLabel" aria-hidden="true">
+        <div class="modal fade" id="modificaDispositivoModal" tabindex="-1" aria-labelledby="modificaDispositivoLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modificaDispositivo">Modifica dispositivo</h5>
+                        <h5 class="modal-title" id="modificaDispositivoTitle">Modifica dispositivo</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="inputGroupSelect01">Categoria</label>
-                            <select class="form-select" id="inputGroupSelect01">
+                            <label class="input-group-text" for="inputGroupSelect021">Categoria</label>
+                            <select class="form-select" id="inputGroupSelect021">
                                 <option selected>Choose...</option>
                                 <option value="1"><i class="fas fa-lightbulb" style="color: Y;"></i> Luce</option>
                                 <option value="2">Frigorifero</option>
@@ -131,11 +126,11 @@
                             </select>
                         </div>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Nome del dispositivo" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" id="modificaNomeDispositivo" class="form-control" placeholder="Nome del dispositivo" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="inputGroupSelect01">Stanza</label>
-                            <select class="form-select" id="inputGroupSelect01">
+                            <label class="input-group-text" for="inputGroupSelect022">Stanza</label>
+                            <select class="form-select" id="inputGroupSelect022">
                                 <option selected>Nessuna</option>
                                 <option value="1">Bagno</option>
                                 <option value="2">Soggiorno</option>
@@ -143,8 +138,8 @@
                             </select>
                         </div>
                         <div class="input-group mb-3">
-                            <label class="input-group-text" for="inputGroupSelect01">Proprietà</label>
-                            <select class="form-select" id="inputGroupSelect01">
+                            <label class="input-group-text" for="inputGroupSelect023">Proprietà</label>
+                            <select class="form-select" id="inputGroupSelect023">
                                 <option selected>Nessuna</option>
                                 <option value="1">Proprietà x</option>
                                 <option value="2">Proprietà y</option>
@@ -154,14 +149,14 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Chiudi</button>
-                        <button type="button" class="btn btn-outline-secondary">Salva</button>
+                        <button type="button" id="modificaDispositivo" class="btn btn-outline-secondary">Salva</button>
                     </div>
                 </div>
             </div>
         </div>
         
         <!-- POP UP PER LA CONFERMA ELIMINAZIONE -->
-        <div class="modal" id="eliminaDispositivo" tabindex="-1" aria-labelledby="eliminaDispositivoLabel" aria-hidden="true">
+        <div class="modal" id="eliminaDispositivoModal" tabindex="-1" aria-labelledby="eliminaDispositivoLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -173,7 +168,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Chiudi</button>
-                        <button type="button" class="btn btn-outline-danger">Elimina</button>
+                        <button type="button" id="eliminaDispositivo" class="btn btn-outline-danger" data-bs-dismiss="modal">Elimina</button>
                     </div>
                 </div>
             </div>
@@ -181,7 +176,7 @@
         
         <!--CONTAINER SCHEDE DEI DISPOSITIVI-->
         <div class="container my-5">
-            <div class="row gap-3 justify-content-md-center">
+            <div class="row gap-3 justify-content-md-center" id="rowContainer">
                 <div class="col">
                     <div class="card" href="#" style="width:18rem">
                         <div class="card-body">
@@ -192,7 +187,7 @@
                                 Proprietà:
                             </p>
                             <div class="container">
-                                <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaDispositivo">Modifica</a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaDispositivoModal">Modifica</a>
                                 <a href="#" class="btn btn-outline-danger btn-sm " data-bs-toggle="modal" data-bs-target="#eliminaDispositivo"><img src="/Immagini/TrashVero.png" style="width: 22px; "></a>
                             </div>
                         </div>
@@ -208,7 +203,7 @@
                                 Proprietà:
                             </p>
                             <div class="container">
-                                <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaDispositivo">Modifica</a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaDispositivoModal">Modifica</a>
                                 <a href="#" class="btn btn-outline-danger btn-sm " data-bs-toggle="modal" data-bs-target="#eliminaDispositivo"><img src="/Immagini/TrashVero.png" style="width: 22px; "></a>
                             </div>
                         </div>
@@ -224,7 +219,7 @@
                                 Proprietà:
                             </p>
                             <div class="container">
-                                <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaDispositivo">Modifica</a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaDispositivoModal">Modifica</a>
                                 <a href="#" class="btn btn-outline-danger btn-sm " data-bs-toggle="modal" data-bs-target="#eliminaDispositivo"><img src="/Immagini/TrashVero.png" style="width: 22px; "></a>
                             </div>
                         </div>
@@ -240,7 +235,7 @@
                                 Proprietà:
                             </p>
                             <div class="container">
-                                <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaDispositivo">Modifica</a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaDispositivoModal">Modifica</a>
                                 <a href="#" class="btn btn-outline-danger btn-sm " data-bs-toggle="modal" data-bs-target="#eliminaDispositivo"><img src="/Immagini/TrashVero.png" style="width: 22px; "></a>
                             </div>
                         </div>
@@ -249,9 +244,18 @@
             </div>
         </div>
         
+        <!-- Button trigger modal -->
+        <div class="text-center">
+            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#aggiuntaDispositivo">
+                +
+            </button>
+        </div>
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-        <script src="script.js"></script>
+        <script src="dispositivi.js"></script>
         <script src="https://kit.fontawesome.com/c2bebd0021.js" crossorigin="anonymous"></script>
+        <script>
+            addDispositiviCard();
+        </script>
     </body>
 </html>
