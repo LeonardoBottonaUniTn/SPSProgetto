@@ -4,10 +4,10 @@ let icona;
 //CASE PER LE ICONE
 /*function scegliIcona(categoria){
 
-    //const expr = 'Papayas';
+    
     switch (categoria) {
         case 'Google Home':
-            icona.innerHTML = <i class="fab fa-google"></i> + "Google Home";
+            icona.innerHTML = <i class="fab fa-google"></i> + " Google Home";
             break;
         case 'Luce':
             icona.innerHTML = <i class="fas fa-lightbulb" style="color: Y; "></i> + " Luce";
