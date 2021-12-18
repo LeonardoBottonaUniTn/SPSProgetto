@@ -5,13 +5,13 @@ let icona;
 function scegliIcona(categoria){
   console.log(categoria);
     switch (categoria) {
-        case 'Google Home':
-            return '<i class="fab fa-google"></i>' + "Google Home";
+        case 'GoogleHome':
+            return '<i class="fab fa-google"></i>' + " Google Home";
         case 'Luce':
             return '<i class="fas fa-lightbulb" style="color: Y; "></i>' + " Luce";
         case 'Frigo':
             return '<i class="far fa-snowflake"></i>' + " Frigorifero";
-        case 'Caldo':
+        case 'Calore':
             return '<i class="fas fa-fire"></i>' + " Calorifero";
         case 'Lavaggio':
             return '<i class="fas fa-tshirt"></i>' + "Lavatrice";
