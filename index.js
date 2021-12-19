@@ -156,7 +156,7 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
       const db = client.db(DATABASE);
       return {
         ...stanza,
-        Proprieta: await await db.collection("proprietà").findOne(MongoDB.ObjectId(stanza.Proprieta))
+        Proprieta: await db.collection("proprietà").findOne(MongoDB.ObjectId(stanza.Proprieta))
       }
     }
 
@@ -657,6 +657,8 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
         },
         {
           $project: {
+            Soglia: 1,
+            NomeTrigger: 1,
             Dispositivo: { $arrayElemAt: [ "$Dispositivo", 0 ] }
           }
         }
@@ -712,6 +714,8 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
         },
         {
           $project: {
+            Soglia: 1,
+            NomeTrigger: 1,
             Dispositivo: { $arrayElemAt: [ "$Dispositivo", 0 ] }
           }
         }
