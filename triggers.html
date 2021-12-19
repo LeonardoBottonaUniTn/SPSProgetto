@@ -54,7 +54,7 @@
 
         </nav>
 
-        
+
         <!-- POP UP PER L'AGGIUNTA DEL TRIGGER -->
         <div class="modal fade" id="aggiuntaTrigger" tabindex="-1" aria-labelledby="aggiuntaTriggerLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -65,10 +65,10 @@
                     </div>
                     <div class="modal-body">
                         <div class="input-group mb-3">
-                            
+
                             <input type="text" id="nuovoTriggerDispositivo" class="form-control" placeholder="Nome del dispositivo" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
-                        
+
                         <div class="input-group mb-3">
                             <input type="text" id="nuovoTriggerSoglia" class="form-control" placeholder="Livello soglia" aria-label="Recipient's username" aria-describedby="basic-addon2">
                             <span class="input-group-text" id="basic-addon2">kW/h</span>
@@ -92,7 +92,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="input-group mb-3">
-                            
+
                             <input type="text" id="modificaNomeDispositivo" class="form-control" placeholder="Nome del dispositivo" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
 
@@ -108,7 +108,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- POP UP PER LA CONFERMA ELIMINAZIONE -->
         <div class="modal" id="eliminaTriggerModal" tabindex="-1" aria-labelledby="eliminaTriggerLabel" data-bs-target="#staticBackdrop" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -128,12 +128,12 @@
             </div>
         </div>
 
-        
+
         <!--CONTAINER SCHEDE DEI TRIGGERS-->
         <div class="container my-5" id="ContainerCarte">
             <div class="row gap-3 justify-content-md-center" id="rowContainer">
-                
-                
+
+
             </div>
         </div>
 
@@ -144,12 +144,13 @@
             </button>
         </div>
 
-        
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="triggers.js"></script>
+        <script src="requests.js"></script>
         <script src="https://kit.fontawesome.com/c2bebd0021.js" crossorigin="anonymous"></script>
         <script>
-            addTriggersCard();
+            getTriggers();
         </script>
     </body>
 </html>
