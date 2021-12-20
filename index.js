@@ -859,3 +859,5 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true,
 });
 
 app.listen(49146, () => console.log("Server started"));
+
+module.exports = app;
