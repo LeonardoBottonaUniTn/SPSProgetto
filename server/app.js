@@ -275,6 +275,7 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      *       {
      *         "ConsumiDichiarati": "float"
      *         "DispositivoName": "string",
+     *         "Tipo": "Luce|Calore|Lavaggio|GoogleHome|Frigo",
      *         "Locazione": {
      *           "tipo": "stanza|proprietà",
      *           "id": "string",
@@ -325,6 +326,7 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      *       {
      *         "ConsumiDichiarati": "float"
      *         "DispositivoName": "string",
+     *         "Tipo": "Luce|Calore|Lavaggio|GoogleHome|Frigo",
      *         "Locazione": {
      *           "tipo": "stanza|proprietà",
      *           "id": "string",
