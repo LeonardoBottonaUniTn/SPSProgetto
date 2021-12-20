@@ -10,9 +10,43 @@ function main() {
         .expect('Content-Type', /json/)
         .expect(200)
         .end(function (err, res) {
-            let body = res.body;
+          var expectedTrigger = [
+            {
+                "_id": "61bf58978888b39d86300d63",
+                "Soglia": 1,
+                "NomeTrigger": "Lampadina Salotto",
+                "Dispositivo": {
+                    "_id": "61b1c4ef3d370fa548dec35b",
+                    "ConsumiDichiarati": 0.072,
+                    "DispositivoName": "LampadinaLed1",
+                    "Locazione": {
+                        "tipo": "stanza",
+                        "stanza": null
+                    },
+                    "Tipo": "Luce"
+                }
+            }
+        ];
+          assert.error (err, 'No error');
+          assert.same (res.body, expectedTrigger, 'Triggers as expected');
+          assert.end();
         });
   });
+  test ('Trigger add correctly', function (assert) {
+    request(app)
+        .post ('/trigger')
+        .send ({
+          Dispositivo: "61b1c4ef3d370fa548dec35b",
+          Soglia: 10,
+          NomeTrigger: "Lampadina Salotto HYPER"
+        })
+        .expect (201)
+        .end (function (err, res) {
+          assert.error (err, 'No error');
+          assert.same (res.status, 201, 'Trigger correctly add');
+          assert.end ();
+        });
+  })
 }
 
 /**
