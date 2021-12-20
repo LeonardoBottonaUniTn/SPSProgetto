@@ -17,7 +17,6 @@ var database;
 
 const swaggerJsDoc = require ('swagger-jsdoc');
 const swaggerUI = require ('swagger-ui-express');
-
 const swaggerOptions = {
     swaggerDefinition: {
         info: {
@@ -29,9 +28,8 @@ const swaggerOptions = {
             servers: ["http://localhost:49146"]
         }
     },
-    apis: ["index.js"]
+    apis: ['./server/*.js'],
 };
-
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 app.use ('/api-docs', swaggerUI.serve, swaggerUI.setup (swaggerDocs));
@@ -165,6 +163,8 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      * @openapi
      * /dispositivi:
      *   get:
+     *     tags:
+     *       - Dispositivi
      *     summary: Restituisce una lista di dispositivi.
      *     responses:
      *       '200':
@@ -184,6 +184,8 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      * @openapi
      * /dispositivi/{id_dispositivo}:
      *   get:
+     *     tags:
+     *       - Dispositivi
      *     summary: Restituisce un dispositivo.
      *     parameters:
      *       - name: id_dispositivo
@@ -218,6 +220,8 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      * @openapi
      * /dispositivi/{id_dispositivo}/consumo:
      *   get:
+     *     tags:
+     *       - Dispositivi
      *     summary: Restituisce i kWh consumati in un periodo di tempo da un dispositivo.
      *     parameters:
      *       - name: id_dispositivo
@@ -268,6 +272,8 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      * @openapi
      * /dispositivi:
      *   post:
+     *     tags:
+     *       - Dispositivi
      *     summary: Aggiunge un dispositivo.
      *     description: |
      *       Aggiunge un dispositivo con i dati passati. Il body della richiesta deve contenere un JSON come segue:
@@ -275,6 +281,7 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      *       {
      *         "ConsumiDichiarati": "float"
      *         "DispositivoName": "string",
+     *         "Tipo": "Luce|Calore|Lavaggio|GoogleHome|Frigo",
      *         "Locazione": {
      *           "tipo": "stanza|proprietà",
      *           "id": "string",
@@ -313,6 +320,8 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      * @openapi
      * /dispositivi/{id_dispositivo}:
      *   put:
+     *     tags:
+     *       - Dispositivi
      *     summary: Modifica un dispositivo.
      *     parameters:
      *       - name: id_dispositivo
@@ -325,6 +334,7 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      *       {
      *         "ConsumiDichiarati": "float"
      *         "DispositivoName": "string",
+     *         "Tipo": "Luce|Calore|Lavaggio|GoogleHome|Frigo",
      *         "Locazione": {
      *           "tipo": "stanza|proprietà",
      *           "id": "string",
@@ -377,6 +387,8 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      * @openapi
      * /dispositivi/{id_dispositivo}:
      *   delete:
+     *     tags:
+     *       - Dispositivi
      *     summary: Cancella un dispositivo.
      *     parameters:
      *       - name: id_dispositivo
@@ -408,6 +420,8 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      * @openapi
      * /proprieta:
      *   get:
+     *     tags:
+     *       - Proprietà
      *     summary: Restituisce una lista di proprietà.
      *     responses:
      *       '200':
@@ -421,8 +435,54 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
 
     /**
      * @openapi
+     * /proprieta/{id_proprietà}/stanze:
+     *   get:
+     *     tags:
+     *       - Proprietà
+     *     summary: Restituisce una lista di stanze all'interno della proprietà.
+     *     parameters:
+     *       - name: id_proprietà
+     *         in: path
+     *         required: true
+     *         description: L'ID della proprietà.
+     *     description: |
+     *       Restituisce una lista di stanze all'interno della proprietà.
+     *     responses:
+     *       '200':
+     *         description: Un array di stanze all'interno della proprietà.
+     *       '404':
+     *         description: Nessuna proprietà con quell'ID è stato trovata.
+     *       '400':
+     *         description: L'ID inserito è invalido.
+     */
+    app.get("/proprieta/:id/stanze", async (req, res) => {
+      let id;
+      try {
+        id = MongoDB.ObjectId(req.params.id);
+      } catch(exc) {
+        res.status(400).json({ errore: "ID della proprietà invalido."});
+        return;
+      }
+      if(!(await exists("proprietà", id))) {
+        res.status(404).json({ errore: "La proprietà non esiste." });
+        return;
+      }
+
+      const db = client.db(DATABASE);
+      db.collection('stanza').find({  // Cerca le stanze dentro la proprietà
+        "Proprieta": id,
+      })
+        .toArray()
+        .then(results => res.json(results))
+        .catch(err => res.send(err));
+    });
+
+    /**
+     * @openapi
      * /proprieta/{id_proprietà}/consumo:
      *   get:
+     *     tags:
+     *       - Proprietà
      *     summary: Restituisce i kWh consumati in un periodo di tempo da una proprietà.
      *     parameters:
      *       - name: id_proprietà
@@ -498,6 +558,8 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      * @openapi
      * /stanze:
      *   get:
+     *     tags:
+     *       - Stanze
      *     summary: Restituisce una lista di stanze.
      *     responses:
      *       '200':
@@ -517,6 +579,8 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      * @openapi
      * /stanze/{id_stanza}/consumo:
      *   get:
+     *     tags:
+     *       - Stanze
      *     summary: Restituisce i kWh consumati in un periodo di tempo da una stanza.
      *     parameters:
      *       - name: id_stanza
@@ -576,6 +640,8 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      * @openapi
      * /utenti/{email_utente}/consumo:
      *   get:
+     *     tags:
+     *       - Utenti
      *     summary: Restituisce i kWh consumati in un periodo di tempo da un utente.
      *     parameters:
      *       - name: email_utente
@@ -640,6 +706,8 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      * @openapi
      * /trigger:
      *   get:
+     *     tags:
+     *       - Trigger
      *     summary: Restituisce una lista di trigger.
      *     responses:
      *       '200':
@@ -678,6 +746,8 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      * @openapi
      * /trigger/{id_trigger}:
      *   get:
+     *     tags:
+     *       - Trigger
      *     summary: Restituisce un trigger.
      *     parameters:
      *       - name: id_trigger
@@ -732,6 +802,8 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      * @openapi
      * /trigger:
      *   post:
+     *     tags:
+     *       - Trigger
      *     summary: Aggiunge un trigger.
      *     description: |
      *       Aggiunge un trigger con i dati passati. Il body della richiesta deve contenere un JSON come segue:
@@ -773,6 +845,8 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      * @openapi
      * /trigger/{id_trigger}:
      *   put:
+     *     tags:
+     *       - Trigger
      *     summary: Modifica un trigger.
      *     parameters:
      *       - name: id_trigger
@@ -831,6 +905,8 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      * @openapi
      * /trigger/{id_trigger}:
      *   delete:
+     *     tags:
+     *       - Trigger
      *     summary: Cancella un trigger.
      *     parameters:
      *       - name: id_trigger
