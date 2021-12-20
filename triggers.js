@@ -3,7 +3,7 @@ let iterator = 0;
 
 //Prende e stampa i trigger già esistenti
 
-var triggers = [
+/*var triggers = [
   {
     _id: "61b1e65c3d370fa548dec3a2",
     Dispositivo: {
@@ -30,14 +30,13 @@ var triggers = [
     },
     Soglia: 130
   },
-];
+];*/
 
 
-function addTriggersCard(){  
+function addTriggersCard(triggers){
 
   let numeroTriggers = triggers.length;
-  
-  
+
   while(iterator < numeroTriggers){
     let ExistingTriggerCard = '<div class="col" id="' + triggers[iterator]._id + '">' +
                       '<div class="card mb-5 bg-body rounded" style="width:18rem">' +
@@ -83,9 +82,9 @@ function eliminaCard(id) {
 btnModalID.addEventListener('click', (event) => {
     console.log(event.target.id);
           if(event.target.id == btnModalID.id) {
-            
+
             card.remove();
-            
+
           }
 });
 
@@ -102,7 +101,7 @@ function addNewTrigger(){
   iterator = 0;
   nomeDispositivo = document.getElementById("nuovoTriggerDispositivo").value;
   livelloSoglia = document.getElementById("nuovoTriggerSoglia").value;
-  
+
   let newTriggerCard = '<div class="col" '/*id="' +  idGeneratoInQualcheMdodo*/ + '">' +
                             '<div class="card mb-5 bg-body rounded " style="width:18rem">' +
                               '<div class="card-body">' +
@@ -121,7 +120,7 @@ function addNewTrigger(){
     iterator++;
     console.log(newTriggerCard);
     document.getElementById("rowContainer").innerHTML += newTriggerCard;
-    
+
   }
 
 
@@ -147,7 +146,7 @@ function reloadTriggersCard(){
   document.getElementById("rowContainer").innerHTML = '';
   iterator = 0;
   let numeroTriggers = triggers.length;
-  while(iterator < numeroTriggers){  
+  while(iterator < numeroTriggers){
     let ExistingTriggerCard = '<div class="col" id="' + triggers[iterator]._id + '">' +
                                     '<div class="card mb-5 bg-body rounded" style="width:18rem">' +
                                       '<div class="card-body">' +
@@ -163,14 +162,14 @@ function reloadTriggersCard(){
                                       '</div>' +
                                   '</div>' +
                                 '</div>';
-    
+
     document.getElementById("rowContainer").innerHTML += ExistingTriggerCard;
     iterator++;
   }
 };
 
 function modifyTrigger(){
-  
+
   console.log(document.getElementById("modificaNomeDispositivo").value);
   console.log(document.getElementById("modificaLivelloSoglia").value);
   let modificaNomeDispositivo = document.getElementById("modificaNomeDispositivo").value;
@@ -179,6 +178,3 @@ function modifyTrigger(){
   triggers[i].Soglia =  modificaSoglia;
   reloadTriggersCard()
 }
-
-
-

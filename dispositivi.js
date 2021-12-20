@@ -20,7 +20,7 @@ function scegliIcona(categoria){
     }
 };
 
-let dispositivi = [
+/*let dispositivi = [
     {
         "_id": "61b1c4ef3d370fa548dec35b",
         "ConsumiDichiarati": 0.072,
@@ -172,10 +172,11 @@ let dispositivi = [
         },
         "Tipo": "Frigo"
     }
-];
+];*/
 
 
-function addDispositiviCard(){
+function addDispositiviCard(dispositivi){
+  console.log(dispositivi);
     let numeroDispositivi = dispositivi.length;
 
     while(iterator < numeroDispositivi){
