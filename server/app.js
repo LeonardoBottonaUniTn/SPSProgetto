@@ -17,7 +17,6 @@ var database;
 
 const swaggerJsDoc = require ('swagger-jsdoc');
 const swaggerUI = require ('swagger-ui-express');
-
 const swaggerOptions = {
     swaggerDefinition: {
         info: {
@@ -29,9 +28,8 @@ const swaggerOptions = {
             servers: ["http://localhost:49146"]
         }
     },
-    apis: ["index.js"]
+    apis: ['./server/*.js'],
 };
-
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 app.use ('/api-docs', swaggerUI.serve, swaggerUI.setup (swaggerDocs));
