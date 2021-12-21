@@ -66,6 +66,7 @@ function addTriggersCard(triggers){
 // Azioni dei bottoni trigger
 var btnModalID = document.getElementById('eliminaTrigger');
 let card;
+let idTrigger;
 
 // btnID.addEventListener('click', (event) => {
 //     console.log(event.target.id);
@@ -77,6 +78,7 @@ let card;
 
 function eliminaCard(id) {
   card = document.getElementById(id);
+  idTrigger = id;
 }
 
 btnModalID.addEventListener('click', (event) => {
@@ -84,7 +86,8 @@ btnModalID.addEventListener('click', (event) => {
           if(event.target.id == btnModalID.id) {
 
             card.remove();
-
+            
+            deleteTrigger(idTrigger);
           }
 });
 

@@ -209,9 +209,12 @@ function addDispositiviCard(dispositivi){
 var btnModalID = document.getElementById('eliminaDispositivo');
 //console.log(btnModalID.id);
 let card;
+let idDispositivo;
+
 
 function eliminaCard(id) {
     card = document.getElementById(id);
+    idDispositivo = id;
 }
 
 btnModalID.addEventListener('click', (event) => {
@@ -219,6 +222,7 @@ btnModalID.addEventListener('click', (event) => {
     if(event.target.id == btnModalID.id) {
 
         card.remove();
+        deleteDispositivo(idDispositivo);
     }
 });
 
