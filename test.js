@@ -12,18 +12,18 @@ function main() {
         .end(function (err, res) {
           var expectedTrigger = [
             {
-                "_id": "61bf58978888b39d86300d63",
-                "Soglia": 1,
-                "NomeTrigger": "Lampadina Salotto",
-                "Dispositivo": {
-                    "_id": "61b1c4ef3d370fa548dec35b",
-                    "ConsumiDichiarati": 0.072,
-                    "DispositivoName": "LampadinaLed1",
-                    "Locazione": {
-                        "tipo": "stanza",
-                        "stanza": null
+                _id: "61bf58978888b39d86300d63",
+                Soglia: 1,
+                NomeTrigger: "Lampadina Salotto",
+                Dispositivo: {
+                    _id: "61b1c4ef3d370fa548dec35b",
+                    ConsumiDichiarati: 0.072,
+                    DispositivoName: "LampadinaLed1",
+                    Locazione: {
+                        tipo: "stanza",
+                        stanza: null
                     },
-                    "Tipo": "Luce"
+                    Tipo: "Luce"
                 }
             }
         ];
@@ -46,7 +46,7 @@ function main() {
           assert.same (res.status, 201, 'Trigger correctly add');
           assert.end ();
         });
-  })
+  });
 }
 
 /**
