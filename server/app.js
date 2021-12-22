@@ -165,6 +165,20 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      *     tags:
      *       - Dispositivi
      *     summary: Restituisce una lista di dispositivi.
+     *     description: |
+     *     Un singolo dispositivo è formattato come segue:
+     *     ```json
+     *     {
+     *       "_id": "string(hexadecimal)",
+     *       "ConsumiDichiarati": "float",
+     *       "DispositivoNome": "string",
+     *       "Locazione": {
+     *         "tipo": "stanza|proprietà",
+     *         "stanza": "object(stanza)",
+     *         "proprietà": "object(proprietà)"
+     *       }
+     *     }
+     *     ```
      *     responses:
      *       '200':
      *         description: Un Array JSON di dispositivi.
@@ -186,6 +200,20 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      *     tags:
      *       - Dispositivi
      *     summary: Restituisce un dispositivo.
+     *     description: |
+     *     Il dispositivo è formattato come segue:
+     *     ```json
+     *     {
+     *       "_id": "string(hexadecimal)",
+     *       "ConsumiDichiarati": "float",
+     *       "DispositivoNome": "string",
+     *       "Locazione": {
+     *         "tipo": "stanza|proprietà",
+     *         "stanza": "object(stanza)",
+     *         "proprietà": "object(proprietà)"
+     *       }
+     *     }
+     *     ```
      *     parameters:
      *       - name: id_dispositivo
      *         in: path
@@ -236,6 +264,12 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      *       }
      *       ```
      *       Entrambi gli attributi sono opzionali, e vengono ignorati se i dati inseriti non sono sintatticamente corretti.
+     *       I dati restituiti dall'API avranno questo formato:
+     *       ```json
+     *       {
+     *         "consumo": "float"
+     *       }
+     *       ```
      *     responses:
      *       '200':
      *         description: Il consumo in kWh del dispositivo.
@@ -523,6 +557,12 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      *       }
      *       ```
      *       Entrambi gli attributi sono opzionali, e vengono ignorati se i dati inseriti non sono sintatticamente corretti.
+     *       I dati restituiti dall'API avranno questo formato:
+     *       ```json
+     *       {
+     *         "consumo": "float"
+     *       }
+     *       ```
      *     responses:
      *       '200':
      *         description: Il consumo in kWh dei dispositivi nella proprietà.
@@ -623,6 +663,12 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      *       }
      *       ```
      *       Entrambi gli attributi sono opzionali, e vengono ignorati se i dati inseriti non sono sintatticamente corretti.
+     *       I dati restituiti dall'API avranno questo formato:
+     *       ```json
+     *       {
+     *         "consumo": "float"
+     *       }
+     *       ```
      *     responses:
      *       '200':
      *         description: Il consumo in kWh dei dispositivi nella stanza.
@@ -686,6 +732,12 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      *       }
      *       ```
      *       Entrambi gli attributi sono opzionali, e vengono ignorati se i dati inseriti non sono sintatticamente corretti.
+     *       I dati restituiti dall'API avranno questo formato:
+     *       ```json
+     *       {
+     *         "consumo": "float"
+     *       }
+     *       ```
      *     responses:
      *       '200':
      *         description: Il consumo in kWh dei dispositivi dell'utente.
@@ -740,6 +792,16 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      *     tags:
      *       - Trigger
      *     summary: Restituisce una lista di trigger.
+     *     description: |
+     *     L'API restituirà un oggetto JSON con il seguente formato:
+     *     ```json
+     *     {
+     *       "_id": "string(hexadecimal)",
+     *       "Dispositivo": "object(Dispositivo)",
+     *       "Soglia": "float",
+     *       "NomeTrigger": "string"
+     *     }
+     *     ```
      *     responses:
      *       '200':
      *         description: Un Array JSON di trigger.
@@ -780,6 +842,16 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      *     tags:
      *       - Trigger
      *     summary: Restituisce un trigger.
+     *     description: |
+     *     L'API restituirà un oggetto JSON con il seguente formato:
+     *     ```json
+     *     {
+     *       "_id": "string(hexadecimal)",
+     *       "Dispositivo": "object(Dispositivo)",
+     *       "Soglia": "float",
+     *       "NomeTrigger": "string"
+     *     }
+     *     ```
      *     parameters:
      *       - name: id_trigger
      *         in: path
