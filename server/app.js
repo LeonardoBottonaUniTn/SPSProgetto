@@ -284,7 +284,19 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      *         "Tipo": "Luce|Calore|Lavaggio|GoogleHome|Frigo",
      *         "Locazione": {
      *           "tipo": "stanza|proprietà",
-     *           "id": "string",
+     *           "id": "string (hexadecimal)",
+     *         }
+     *       }
+     *       ```
+     *       Un esempio di un JSON valido sarebbe:
+     *       ```json
+     *       {
+     *         "ConsumiDichiarati": 20
+     *         "DispositivoName": "Frigorifero",
+     *         "Tipo": "Frigo",
+     *         "Locazione": {
+     *           "tipo": "stanza",
+     *           "id": "61b1c4ef3d370fa548dec35b",
      *         }
      *       }
      *       ```
@@ -337,7 +349,19 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      *         "Tipo": "Luce|Calore|Lavaggio|GoogleHome|Frigo",
      *         "Locazione": {
      *           "tipo": "stanza|proprietà",
-     *           "id": "string",
+     *           "id": "string (hexadecimal)",
+     *         }
+     *       }
+     *       ```
+     *       Un esempio di un JSON valido sarebbe:
+     *       ```json
+     *       {
+     *         "ConsumiDichiarati": 20
+     *         "DispositivoName": "Frigorifero",
+     *         "Tipo": "Frigo",
+     *         "Locazione": {
+     *           "tipo": "stanza",
+     *           "id": "61b1c4ef3d370fa548dec35b",
      *         }
      *       }
      *       ```
@@ -809,9 +833,17 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      *       Aggiunge un trigger con i dati passati. Il body della richiesta deve contenere un JSON come segue:
      *       ```json
      *       {
-     *         "Dispositivo": "string"
+     *         "Dispositivo": "string (hexadecimal)"
      *         "Soglia": "float",
      *         "NomeTrigger": "string"
+     *       }
+     *       ```
+     *       Un esempio di un JSON valido sarebbe:
+     *       ```json
+     *       {
+     *         "Dispositivo": "61b1c4ef3d370fa548dec35b"
+     *         "Soglia": 30,
+     *         "NomeTrigger": "Nuovo Trigger"
      *       }
      *       ```
      *     responses:
@@ -857,9 +889,17 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      *       Modifica i dati passati. Il body della richiesta deve contenere un JSON come segue:
      *       ```json
      *       {
-     *         "Dispositivo": "string"
+     *         "Dispositivo": "string (hexadecimal)"
      *         "Soglia": "float",
      *         "NomeTrigger": "string"
+     *       }
+     *       ```
+     *       Un esempio di un JSON valido sarebbe:
+     *       ```json
+     *       {
+     *         "Dispositivo": "61b1c4ef3d370fa548dec35b"
+     *         "Soglia": 3.5,
+     *         "NomeTrigger": "Trigger per il mio dispositivo"
      *       }
      *       ```
      *     responses:
