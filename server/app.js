@@ -13,7 +13,6 @@ app.use(bodyParser.json ());
 app.use(bodyParser.urlencoded ({ extended: true }) );
 //name of the created MongoDB
 var DATABASE = "SPS_db";
-var database;
 
 const swaggerJsDoc = require ('swagger-jsdoc');
 const swaggerUI = require ('swagger-ui-express');

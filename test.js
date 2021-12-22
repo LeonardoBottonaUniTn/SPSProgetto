@@ -13,7 +13,7 @@ function main() {
           var expectedTrigger = [
             {
                 _id: "61bf58978888b39d86300d63",
-                Soglia: 1,
+                Soglia: 2,
                 NomeTrigger: "Lampadina Salotto",
                 Dispositivo: {
                     _id: "61b1c4ef3d370fa548dec35b",
@@ -32,20 +32,59 @@ function main() {
           assert.end();
         });
   });
-  test ('Trigger add correctly', function (assert) {
+  test ('Trigger correctly add', function (assert) {
     request(app)
         .post ('/trigger')
         .send ({
           Dispositivo: "61b1c4ef3d370fa548dec35b",
-          Soglia: 10,
+          Soglia: 1,
           NomeTrigger: "Lampadina Salotto HYPER"
         })
         .expect (201)
         .end (function (err, res) {
           assert.error (err, 'No error');
-          assert.same (res.status, 201, 'Trigger correctly add');
+          assert.same (res.body.acknowledged, true, 'Trigger correctly add');
           assert.end ();
         });
+  });
+  test (' Trigger modify correctly', function (assert) {
+    request (app)
+      .put ('/trigger/61bf58978888b39d86300d63')
+      .send ({
+        Dispositivo: "61b1c4ef3d370fa548dec35b",
+        Soglia: 1,
+        NomeTrigger: "Lampadina Salotto"
+      })
+      .expect (200)
+      .expect ('Content-Type', /json/)
+      .end (function (err, res) {
+        var expectedTrigger =
+          {
+            "acknowledged": true,
+            "modifiedCount": 1,
+            "upsertedId": null,
+            "upsertedCount": 0,
+            "matchedCount": 1
+          };
+        assert.error (err, 'No error');
+        assert.same (res.body, expectedTrigger,  'Trigger as expected');
+        assert.end ();
+      });
+  });
+  test ('Trigger correctly deleted', function (assert) {
+    request(app)
+      .delete ('/trigger/61bf58978888b39d86300d63')
+      .expect (200)
+      .expect ('Content-Type', /json/)
+      .end ( function (err, res) {
+        var expectedTrigger = {
+          "acknowledged": true,
+          "deletedCount": 1
+        }
+        assert.error (err, 'No error');
+        assert.same (res.body, expectedTrigger, 'Trigger correctly deleted');
+        assert.end ();
+      })
   });
 }
 
