@@ -1,0 +1,49 @@
+[{
+  "_id": {
+    "$oid": "61b1e65c3d370fa548dec3a2"
+  },
+  "Dispositivo": {
+    "$oid": "61b1c4ef3d370fa548dec35b"
+  },
+  "Soglia": 1
+},{
+  "_id": {
+    "$oid": "61b1e70b3d370fa548dec3a4"
+  },
+  "Dispositivo": {
+    "$oid": "61b1c8bf3d370fa548dec35e"
+  },
+  "Soglia": 130
+},{
+  "_id": {
+    "$oid": "61b1e74c3d370fa548dec3a5"
+  },
+  "Dispositivo": {
+    "$oid": "61b1caa93d370fa548dec361"
+  },
+  "Soglia": 60
+},{
+  "_id": {
+    "$oid": "61b1e77e3d370fa548dec3a6"
+  },
+  "Dispositivo": {
+    "$oid": "61b1cae43d370fa548dec362"
+  },
+  "Soglia": 1.5
+},{
+  "_id": {
+    "$oid": "61b1e7e23d370fa548dec3a7"
+  },
+  "Dispositivo": {
+    "$oid": "61b1d99a3d370fa548dec394"
+  },
+  "Soglia": 1.5
+},{
+  "_id": {
+    "$oid": "61b1e8213d370fa548dec3a9"
+  },
+  "Dispositivo": {
+    "$oid": "61b1dd393d370fa548dec39e"
+  },
+  "Soglia": 1
+}]

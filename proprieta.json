@@ -1,0 +1,27 @@
+{"proprietà":[{
+  "_id": {
+    "$oid": "61b1d2863d370fa548dec37b"
+  },
+  "NomeProprieta": "myHome",
+  "NumeroStanze": 6,
+  "ElencoStanze": [
+    "Cucina",
+    "Salotto",
+    "Bagno",
+    "Lavanderia",
+    "StanzaLetto1",
+    "StanzaLetto2"
+  ]
+},{
+  "_id": {
+    "$oid": "61b1d2bd3d370fa548dec37c"
+  },
+  "NomeProprieta": "SecondHome",
+  "NumeroStanze": 4,
+  "ElencoStanze": [
+    "Salotto",
+    "Cucina",
+    "Bagno",
+    "CameraLetto"
+  ]
+}]}
