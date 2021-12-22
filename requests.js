@@ -117,7 +117,7 @@ function getConsumiProprieta(proprieta) {
     console.log(proprieta._id + "_consumoProprieta");
     console.log(document.getElementById(proprieta._id + "_consumoPropieta"));
 
-    document.getElementById(proprieta._id + "_consumoPropieta").innerHTML = response.consumo;
+    document.getElementById(proprieta._id + "_consumoProprieta").innerHTML = (response.consumo).toFixed(2) + " kW/h";
   })
   
 }
