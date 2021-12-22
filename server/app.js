@@ -896,7 +896,10 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
       ]);
 
       cursor.next()
-        .then(async result => ({ ...result, Dispositivo: await expandDispositivo(result.Dispositivo) }))
+        .then(async result => {
+          if(!result) return;
+          return ({ ...result, Dispositivo: await expandDispositivo(result.Dispositivo) })
+        })
         .then(result => res.status(result ? 200 : 404).json(result))
         .catch(err => res.status(500).json(err));
     });
