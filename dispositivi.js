@@ -176,7 +176,7 @@ function scegliIcona(categoria){
 
 
 function addDispositiviCard(dispositivi){
-  console.log(dispositivi);
+console.log(dispositivi);
     let numeroDispositivi = dispositivi.length;
 
     while(iterator < numeroDispositivi){

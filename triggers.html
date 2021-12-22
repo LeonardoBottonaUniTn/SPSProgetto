@@ -65,9 +65,17 @@
                     </div>
                     <div class="modal-body">
                         <div class="input-group mb-3">
-
-                            <input type="text" id="nuovoTriggerDispositivo" class="form-control" placeholder="Nome del dispositivo" aria-label="Username" aria-describedby="basic-addon1">
-                        </div>
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputDispositiviTrigger">Dispositi</label>
+                            </div>
+                            <select class="custom-select" id="inputDispositiviTrigger">
+                                <option selected>Choose...</option>
+                                
+                            </select>
+                            </div>
+                        <div class="input-group mb-3">
+                            <input type="text" id="nuovoTriggerDispositivo" class="form-control" placeholder="Nome Trigger" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        </div>       
 
                         <div class="input-group mb-3">
                             <input type="text" id="nuovoTriggerSoglia" class="form-control" placeholder="Livello soglia" aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -151,6 +159,9 @@
         <script src="https://kit.fontawesome.com/c2bebd0021.js" crossorigin="anonymous"></script>
         <script>
             getTriggers();
+        </script>
+        <script>
+            getOptionsDispositivi();
         </script>
     </body>
 </html>

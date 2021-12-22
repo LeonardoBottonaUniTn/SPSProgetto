@@ -58,75 +58,18 @@
         <!--container dashboard-->
         <div class="container text-center" id="containerDashboard">
             <!--CARD CONSUMO MENSILE-->
-            <div class="container rounded-pill border border-secondary" style="background-color: #F8F9FA; max-width: 300px;">
-                <p class="h6" >Mese&emsp;|&emsp;Proprietà</p>
-            </div>
-            <div class="bg-color border border-secondary" style="background-color: #F8F9FA; border-radius: 1ch; height: 150px; margin-top: 15px; margin-left: 0px; margin-right: 0px;">
-                
-                <h4 class="display-6" style=" text-align: left; margin-left: 20px; margin-top: -5px;">
-                    Consumo</br>
-                    mensile
-                    <p class="h1" style=" text-align: right; text-align: end; margin-right: 60px; font-size: 50px; margin-bottom: 40px;">112 kW/H</p>
-                </h4>
-            </div>
-            </div>
-                <div class="container">
-                    <div class="row ">
-                        <div class="col-md-6 " style="margin-right: 0%;">
-                            <div class="card text-center border border-secondary" style="background-color: #F8F9FA; border: #F8F9FA; margin-top: 15px;">
-                                <div class="card-body " style="background-color: #F8F9FA; border-color: #F8F9FA; border-radius: 3ch;">
-                                    <h2 class="card-title">
-                                        9
-                                    </h2>
-                                    <p class="card-text" >Camera</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6" style="margin-right: 0%;">
-                            <div class="card text-center border border-secondary" style="background-color: #F8F9FA; border: #F8F9FA; margin-top: 15px;">
-                                <div class="card-body " style="background-color: #F8F9FA; border-color: #F8F9FA; border-radius: 3ch;">
-                                    <h2 class="card-title" style="color: d;">
-                                        9
-                                    </h2>
-                                    <p class="card-text">Camera</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6" style="margin-right: 0%;">
-                            <div class="card text-center border border-secondary" style="background-color: #F8F9FA; border: black; margin-top: 15px;">
-                                <div class="card-body " style="background-color: #F8F9FA; border-color: black; border-radius: 3ch;">
-                                    <h2 class="card-title">
-                                        9
-                                    </h2>
-                                    <p class="card-text" style="color: d;">Camera</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6" style="margin-right: 0%;">
-                            <div class="card text-center border border-secondary" style="background-color: #F8F9FA; border: #F8F9FA; margin-top: 15px;">
-                                <div class="card-body" style="background-color: #F8F9FA; border-color: #F8F9FA; border-radius: 3ch;">
-                                    <h2 class="card-title" style="color: d;">
-                                        9
-                                    </h2>
-                                    <p class="card-text" style="color: d;">Camera</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
             
-            <div class="bg-color border border-secondary" style="background-color: #F8F9FA; border-radius: 3px; height: 150px; margin-top: 15px; margin-left: 0px; margin-right: 0px;">
-                
-                <h4 class="display-6" style=" text-align: left; margin-left: 20px; margin-top: -5px;">
-                    Media</br>
-                    mensile
-                    <p class="h1" style=" text-align: right; text-align: end; margin-right: 60px; font-size: 50px; margin-bottom: 40px;">125 kW/H</p>
-                </h4>
-            </div>
-        </br>
         
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="dashboard.js"></script>
+        <script src="requests.js"></script>
+        <script>
+            getProprietà();
+        </script>
+        <script>
+            addDashboard();
+        </script>
     </body>
 </html>

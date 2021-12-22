@@ -34,7 +34,7 @@ let iterator = 0;
 
 
 function addTriggersCard(triggers){
-
+  console.log(triggers);
   let numeroTriggers = triggers.length;
 
   while(iterator < numeroTriggers){
@@ -94,6 +94,21 @@ btnModalID.addEventListener('click', (event) => {
 
 
 //creaTrigger
+
+//fill options select
+function addOptions(dispositivi){
+  iterator = 0;
+  console.log(dispositivi)
+  let NumDispositivi = dispositivi.length;
+  while(iterator < NumDispositivi){
+    let opzione = '<option value="' + dispositivi[iterator]._id + '">' + dispositivi[iterator].DispositivoName + '</option>';
+
+    document.getElementById('inputDispositiviTrigger').innerHTML += opzione;
+    iterator++;
+  }
+
+}
+
 addBtn = document.getElementById('saveNewtrigger');
 let nomeDispositivo;
 let livelloSoglia;
@@ -104,8 +119,14 @@ function addNewTrigger(){
   iterator = 0;
   nomeDispositivo = document.getElementById("nuovoTriggerDispositivo").value;
   livelloSoglia = document.getElementById("nuovoTriggerSoglia").value;
+  
+  postNewTrigger(nomeDispositivo, livelloSoglia, document.getElementById('inputDispositiviTrigger').value);
 
-  let newTriggerCard = '<div class="col" '/*id="' +  idGeneratoInQualcheMdodo*/ + '">' +
+  
+  }
+
+  function createNewTrigger(data, livelloSoglia, nomeDispositivo){
+    let newTriggerCard = '<div class="col" '+ data.insertedId + '">' +
                             '<div class="card mb-5 bg-body rounded " style="width:18rem">' +
                               '<div class="card-body">' +
                                 '<h5 class="card-title"> Trigger ' + nomeDispositivo + '</h5>' +
@@ -114,8 +135,8 @@ function addNewTrigger(){
                                 'Livello soglia : ' + livelloSoglia +
                                 '</p>' +
                                 '<div class="container">' +
-                                  '<a href="#" onclick="modificaCard('  /*idGeneratoInQualcheModo*/ + ')" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaTriggerModal">Modifica</a>' +
-                                  '<a href="#eliminaTriggerModal" onclick="eliminaCard(' /*idGeneratoInQualcheModo*/ + ')" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTrigger"><i class="fas fa-trash-alt" style="color: black; width: 18px;"></i></a>' +
+                                  '<a href="#" onclick="modificaCard('  + data.insertedId + ')" class="btn btn-outline-secondary btn-sm" style="margin-right: 80px;" data-bs-toggle="modal" data-bs-target="#modificaTriggerModal">Modifica</a>' +
+                                  '<a href="#eliminaTriggerModal" onclick="eliminaCard(' + data.insertedId + ')" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaTrigger"><i class="fas fa-trash-alt" style="color: black; width: 18px;"></i></a>' +
                                 '</div>' +
                               '</div>' +
                             '</div>' +
