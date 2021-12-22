@@ -8,7 +8,7 @@
     "url": "https://github.com/LeonardoBottonaUniTn/SPSProgetto.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node test.js",
     "start": "node index.js"
   },
   "author": "",
@@ -21,7 +21,9 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongodb": "^4.2.1",
+    "supertest": "^6.1.6",
     "swagger-jsdoc": "^6.1.0",
-    "swagger-ui-express": "^4.2.0"
+    "swagger-ui-express": "^4.2.0",
+    "tape": "^5.3.2"
   }
 }
