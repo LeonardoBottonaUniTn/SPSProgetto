@@ -258,6 +258,8 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
         return;
       }
       let { datetimeStart, datetimeEnd } = req.body;
+      if(!datetimeStart) datetimeStart = "2000-01-01";
+      if(!datetimeEnd) datetimeEnd = "3000-01-01";
 
       const db = client.db(DATABASE);
       let sum = db.collection('consumi').find({
@@ -544,6 +546,8 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
       }
 
       let { datetimeStart, datetimeEnd } = req.body;
+      if(!datetimeStart) datetimeStart = "2000-01-01";
+      if(!datetimeEnd) datetimeEnd = "3000-01-01";
 
       const db = client.db(DATABASE);
       db.collection('stanza').find({  // Cerca le stanze dentro la proprietà
@@ -642,6 +646,8 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
       }
 
       let { datetimeStart, datetimeEnd } = req.body;
+      if(!datetimeStart) datetimeStart = "2000-01-01";
+      if(!datetimeEnd) datetimeEnd = "3000-01-01";
 
       const db = client.db(DATABASE);
       db.collection('dispositivo').find({
@@ -689,7 +695,9 @@ MongoClient.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopolo
      */
     app.get("/utenti/:email/consumo", async (req, res) => {
       const { email } = req.params;
-      const { datetimeStart, datetimeEnd } = req.body;
+      let { datetimeStart, datetimeEnd } = req.body;
+      if(!datetimeStart) datetimeStart = "2000-01-01";
+      if(!datetimeEnd) datetimeEnd = "3000-01-01";
 
       const db = client.db(DATABASE);
       db.collection('proprietà').find({
